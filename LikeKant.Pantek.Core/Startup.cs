@@ -36,6 +36,8 @@ namespace LikeKant.Pantek.Core
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors();
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
