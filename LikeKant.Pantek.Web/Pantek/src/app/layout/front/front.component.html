@@ -1,7 +1,7 @@
 <app-header></app-header>
 <router-outlet></router-outlet>
-<app-footer></app-footer>
-<div class="ashade-home-block-overlay"></div>
+<app-footer *ngIf="pages.isFooter"></app-footer>
+<div *ngIf="pages.isHomeBlockOverlayVisible" class="ashade-home-block-overlay"></div>
 <div class="ashade-menu-overlay"></div>
 <div class="ashade-cursor is-inactive">
     <span class="ashade-cursor-circle"></span>

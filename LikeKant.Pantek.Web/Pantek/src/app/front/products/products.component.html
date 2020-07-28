@@ -1,0 +1,39 @@
+<div class="ashade-page-title-wrap">
+    <h1 class="ashade-page-title"><span>&nbsp;</span>Ürünler</h1>
+</div>
+
+<main class="ashade-content-wrap">
+    <div class="ashade-content-scroll">
+        <div class="ashade-content">
+            <section class="ashade-section">
+                <div class="ashade-row">
+                    <div class="ashade-col col-12">
+                        <ng-container *ngFor="let category of categories">
+                            <h3 class="category-title">{{category.name}}</h3>
+                            <hr class="category-title--hr">
+                            <div class="ashade-albums-grid ashade-grid ashade-grid-3cols">
+                                <div class="ashade-album-item ashade-grid-item"
+                                    *ngFor="let group of category.groups">
+                                    <h5>{{group.name}}</h5>
+                                    <br>
+                                    <div class="ashade-album-item__image">
+                                        <img [src]="group.image" alt="My Special Day" width="800" height="640">
+                                    </div>
+                                    <br>
+                                    <span>{{group.description}}</span>
+                                    <div class="align-right">
+                                        <a [routerLink]="group.link" class="ashade-learn-more">Devamı</a>
+                                    </div>
+                                    <a [routerLink]="group.link" class="ashade-album-item__link"></a>
+                                </div>
+                            </div>
+                            <hr>
+                        </ng-container>
+                    </div>
+                </div><!-- .ashade-row -->
+            </section>
+        </div><!-- .ashade-content -->
+        <app-footer></app-footer>
+    </div>
+
+</main>

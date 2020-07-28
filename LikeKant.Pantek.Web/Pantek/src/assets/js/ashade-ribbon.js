@@ -155,7 +155,7 @@ let ashade_ribbon = {
 
 		if (ashade_ribbon.type == 'large') {
 			setHeight = $ashade_window.height() - $ashade_header.height() - $ashade_footer.height();
-			$this.css('top', $ashade_header.height());
+			// $this.css('top', $ashade_header.height());
 		}
 		if (ashade_ribbon.type == 'medium') {
 			setHeight = $ashade_window.height()/2;

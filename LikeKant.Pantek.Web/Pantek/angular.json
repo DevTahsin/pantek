@@ -7,7 +7,29 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "style": "scss",
+          "skipTests": true
+        },
+        "@schematics/angular:class": {
+          "skipTests": true
+        },
+        "@schematics/angular:directive": {
+          "skipTests": true
+        },
+        "@schematics/angular:guard": {
+          "skipTests": true
+        },
+        "@schematics/angular:interceptor": {
+          "skipTests": true
+        },
+        "@schematics/angular:module": {
+          "skipTests": true
+        },
+        "@schematics/angular:pipe": {
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
         }
       },
       "root": "",
@@ -17,6 +39,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies" : [
+            "devextreme"
+            ],
             "outputPath": "dist/Pantek",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -27,29 +52,65 @@
               "src/favicon.ico",
               "src/assets"
             ],
+            "extractCss": true,
             "styles": [
-              "src/styles.scss",
-              "src/assets/css/style.css",
-              "src/assets/css/line-awesome.css",
-              "src/assets/css/responsive.css",
-              "src/assets/css/justifiedGallery.min.css",
-              "src/assets/css/photoswipe.css",
-              "src/assets/css/tiny-slider.css",
-              "src/assets/css/default-skin/default-skin.css"
+              {
+                "input": "src/assets/css/style.css",
+                "bundleName": "front",
+                "inject": false
+              },
+              {
+                "input": "src/assets/css/line-awesome.css",
+                "bundleName": "front",
+                "inject": false
+              },
+              {
+                "input": "src/assets/css/responsive.css",
+                "bundleName": "front",
+                "inject": false
+              },
+              {
+                "input": "src/assets/css/justifiedGallery.min.css",
+                "bundleName": "front",
+                "inject": false
+              },
+              {
+                "input": "src/assets/css/photoswipe.css",
+                "bundleName": "front",
+                "inject": false
+              },
+              {
+                "input": "src/assets/css/tiny-slider.css",
+                "bundleName": "front",
+                "inject": false
+              },
+              {
+                "input": "src/assets/css/default-skin/default-skin.css",
+                "bundleName": "front",
+                "inject": false
+              },
+              {
+                "input": "node_modules/devextreme/dist/css/dx.common.css",
+                "bundleName": "admin",
+                "inject": false
+              },
+              {
+                "input": "src/assets/admin/themes/generated/theme.base.css",
+                "bundleName": "admin",
+                "inject": false
+              },
+              {
+                "input": "src/assets/admin/themes/generated/theme.additional.css",
+                "bundleName": "admin",
+                "inject": false
+              },
+              {
+                "input": "src/app/layout/admin/admin//dx-styles.scss",
+                "bundleName": "admin",
+                "inject": false
+              }
             ],
-            "scripts": [
-              "src/assets/js/jquery.min.js",
-              "src/assets/js/gsap.min.js",
-              "src/assets/js/masonry.min.js",
-              "src/assets/js/core.js",
-              "src/assets/js/ashade-ribbon.js",
-              "src/assets/js/ashade-slider.js",
-              "src/assets/js/jquery.justifiedGallery.min.js",
-              "src/assets/js/jquery.lazy.min.js",
-              "src/assets/js/photoswipe-ui-default.min.js",
-              "src/assets/js/photoswipe.min.js",
-              "src/assets/js/tiny-slider.js"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -70,8 +131,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
+                  "maximumWarning": "4mb",
+                  "maximumError": "6mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -142,6 +203,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "Pantek"
 }

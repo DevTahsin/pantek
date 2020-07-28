@@ -1476,14 +1476,20 @@ ashade.loading = function() {
 				delay: ashade.config.content_load_delay*1.7
 			});			
 		}
-		if (ashade_ribbon.$bar) {
-			gsap.from(ashade_ribbon.$bar[0], {
-				opacity: 0,
-				y: 20,
-				duration: 1,
-				delay: ashade.config.content_load_delay*1.7
-			});			
-		}
+		var checkExist = setInterval(function() {
+			if (ashade_ribbon) {
+				if (ashade_ribbon.$bar) {
+				gsap.from(ashade_ribbon.$bar[0], {
+					opacity: 0,
+					y: 20,
+					duration: 1,
+					delay: ashade.config.content_load_delay*1.7
+				});			
+			}
+			   clearInterval(checkExist);
+			}
+		 }, 100);
+		
 	}
 	
 	// Show Albums Slider Content
