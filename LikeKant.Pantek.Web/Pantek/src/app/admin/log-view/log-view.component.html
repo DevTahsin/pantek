@@ -1,0 +1,9 @@
+<dx-data-grid id="gridContainer" [dataSource]="dataSource" [showBorders]="true" [columnHidingEnabled]="true">
+    <dxo-filter-row [visible]="true"></dxo-filter-row>
+    <dxi-column dataField="Id" width="50px"></dxi-column>
+    <dxi-column dataField="LogTime" dataType="datetime" caption="İşlem Zamanı" width="150px"></dxi-column>
+    <dxi-column dataField="Type" caption="İşlem Tipi"></dxi-column>
+    <dxi-column dataField="Status" caption="İşlem Detayı"></dxi-column>
+    <dxi-column dataField="Message" caption="Mesaj"></dxi-column>
+    <dxi-column dataField="IP" caption="IP"></dxi-column>
+</dx-data-grid>

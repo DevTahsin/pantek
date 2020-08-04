@@ -21,6 +21,7 @@ namespace LikeKant.Pantek.Core
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                    webBuilder.UseWebRoot("api");
                 });
     }
 }

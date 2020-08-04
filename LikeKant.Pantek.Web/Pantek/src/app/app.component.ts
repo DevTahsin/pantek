@@ -1,6 +1,5 @@
 import { Component, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-
 interface Scripts {
   name: string;
   src: string;
@@ -26,7 +25,8 @@ export const ScriptStore = [
 export class AppComponent {
 
   private loadedScripts: Scripts[] = [];
-  constructor(@Inject(DOCUMENT) private document: Document) { }
+  constructor(@Inject(DOCUMENT) private document: Document) {
+  }
 
   loadStyle(styleName: string) {
     const head = this.document.getElementsByTagName('head')[0];

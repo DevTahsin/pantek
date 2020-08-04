@@ -7,6 +7,8 @@ import { ProfileComponent } from '../../../admin/profile/profile.component';
 import { DisplayDataComponent } from '../../../admin/display-data/display-data.component';
 import { DxDataGridModule, DxFormModule } from 'devextreme-angular';
 import { AdminComponent } from './admin.component';
+import { LogViewComponent } from '../../../admin/log-view/log-view.component';
+import { DxiColumnModule, DxoLookupModule } from 'devextreme-angular/ui/nested';
 
 const routes: Routes = [
   {
@@ -24,7 +26,7 @@ const routes: Routes = [
         canActivate: [AuthGuardService]
       },
       {
-        path: 'home',
+        path: '',
         component: HomeComponent,
         canActivate: [AuthGuardService]
       },
@@ -34,17 +36,22 @@ const routes: Routes = [
         canActivate: [AuthGuardService]
       },
       {
+        path: 'log-view',
+        component: LogViewComponent,
+        canActivate: [AuthGuardService]
+      },
+      {
         path: '**',
-        redirectTo: 'home',
+        redirectTo: '',
         canActivate: [AuthGuardService]
       }]
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes), DxDataGridModule, DxFormModule],
+  imports: [RouterModule.forChild(routes), DxDataGridModule, DxiColumnModule, DxoLookupModule, DxFormModule],
   providers: [AuthGuardService],
   exports: [RouterModule],
-  declarations: [HomeComponent, ProfileComponent, DisplayDataComponent]
+  declarations: [HomeComponent, ProfileComponent, DisplayDataComponent, LogViewComponent]
 })
 export class AdminRoutingModule { }

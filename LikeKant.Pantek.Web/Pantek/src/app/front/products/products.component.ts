@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+import { Title, Meta } from '@angular/platform-browser';
+import { Subscription } from 'rxjs';
 
 interface Group {
   name: string,
@@ -17,11 +20,22 @@ interface Categories {
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss']
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent implements OnInit,OnDestroy {
 
-  constructor() { }
+  constructor(private meta: Meta,private title: Title,public translate: TranslateService) { }
   categories: Categories[];
+  
+  metaSubscribe:Subscription;
+  ngOnDestroy(): void {
+    this.metaSubscribe.unsubscribe();
+  }
+
   ngOnInit(): void {
+    this.metaSubscribe= this.translate.onLangChange.subscribe(t => {
+      this.translate.get(['SAYFALAR.URUNLER.META-BASLIK','SAYFALAR.URUNLER.META-ACIKLAMA']).toPromise().then(t => {
+        this.meta.addTag({name: 'description', content:t['SAYFALAR.URUNLER.META-ACIKLAMA'] })
+        this.title.setTitle(t['SAYFALAR.URUNLER.META-BASLIK']);
+      });})
     this.categories = [{
       name: 'Işık',
       groups: [{

@@ -1,7 +1,7 @@
 <header id="ashade-header">
     <div class="ashade-header-inner">
         <div class="ashade-logo-block">
-            <a href="/" class="ashade-logo is-retina">
+            <a routerLink="/" class="ashade-logo is-retina">
                 <img src="https://via.placeholder.com/64" alt="Logo">
             </a>
         </div>
@@ -9,19 +9,29 @@
             <nav class="ashade-nav">
                 <ul class="main-menu">
                     <li routerLinkActive="current-menu-ancestor" [routerLinkActiveOptions]="{exact: true}">
-                        <a href="/">Ana Sayfa</a>
+                        <a href="/">{{'MENU.ANASAYFA' | translate}}</a>
                     </li>
                     <li routerLinkActive="current-menu-ancestor" [routerLinkActiveOptions]="{exact: true}">
-                        <a routerLink="/about">Hakkımızda</a>
+                        <a href="/about">{{'MENU.HAKKIMIZDA' | translate}}</a>
                     </li>
                     <li routerLinkActive="current-menu-ancestor" [routerLinkActiveOptions]="{exact: true}">
-                        <a routerLink="/products">Ürünler</a>
-                    </li>
-                    <li routerLinkActive="current-menu-ancestor" [routerLinkActiveOptions]="{exact: true}"> 
-                        <a routerLink="/news">Haberler</a>
+                        <a href="/products">{{'MENU.URUNLER' | translate}}</a>
                     </li>
                     <li routerLinkActive="current-menu-ancestor" [routerLinkActiveOptions]="{exact: true}">
-                        <a routerLink="/contact">İletişim</a>
+                        <a href="/news">{{'MENU.HABERLER' | translate}}</a>
+                    </li>
+                    <li routerLinkActive="current-menu-ancestor" [routerLinkActiveOptions]="{exact: true}">
+                        <a href="/contact">{{'MENU.ILETISIM' | translate}}</a>
+                    </li>
+                    <li class="current-menu-item">
+                        <a href="#">
+                            {{selectedLanguage}} <span class="caret"></span> </a>
+                        <ul class="sub-menu">
+                            <li class="current-menu-item" *ngFor="let language of languages">
+                                <a (click)="changeLanguage(language.code)" href="#">
+                                    <img [src]="language.flagUrl" width="24px" />{{language.name}}</a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </nav>

@@ -3,19 +3,24 @@ import { Router, NavigationEnd } from '@angular/router';
 import { filter, map } from "rxjs/operators";
 import { DOCUMENT } from '@angular/common';
 import { AppComponent } from 'src/app/app.component';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '@environments/environment';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-front',
   templateUrl: './front.component.html',
   styleUrls: ['./front.component.scss'],
-    encapsulation: ViewEncapsulation.None,
+  encapsulation: ViewEncapsulation.None,
 })
 export class FrontComponent implements OnInit, AfterViewInit {
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private app: AppComponent,
-    private router: Router) {
+    private router: Router,
+    private http: HttpClient,
+    private translate: TranslateService) {
     document.body.className = 'has-spotlight ashade-smooth-scroll';
     router.events.forEach((event) => {
       if (event instanceof NavigationEnd) {
@@ -35,12 +40,12 @@ export class FrontComponent implements OnInit, AfterViewInit {
     isProductSlider: false
   }
   ngOnInit(): void {
-    this.app.loadStyle('front.css')
+    this.app.loadStyle('front.css');
   }
   ngAfterViewInit() {
     // this.scriptLoaderService.loadAsArray(ScriptStore.map(t => t.name));
     this.app.loadScripts([
-      { name: "jquery", src: "/assets/js/jquery.min.js"},
+      { name: "jquery", src: "/assets/js/jquery.min.js" },
       { name: "gsap", src: "/assets/js/gsap.min.js" },
       { name: "masonry", src: "/assets/js/masonry.min.js" },
       { name: "jquery-justified-gallery", src: "/assets/js/jquery.justifiedGallery.min.js" },
@@ -48,10 +53,10 @@ export class FrontComponent implements OnInit, AfterViewInit {
       { name: "photoswipe-ui-default", src: "/assets/js/photoswipe-ui-default.min.js" },
       { name: "photoswipe", src: "/assets/js/photoswipe.min.js" },
       { name: "tiny-slider", src: "/assets/js/tiny-slider.js" },
-      { name: 'core', src: '/assets/js/core.js'  },
-      { name: "ashade-ribbon", src: "/assets/js/ashade-ribbon.js"},
+      { name: 'core', src: '/assets/js/core.js' },
+      { name: "ashade-ribbon", src: "/assets/js/ashade-ribbon.js" },
       { name: "ashade-slider", src: "/assets/js/ashade-slider.js" }
-  ]);
+    ]);
   }
   openTopPadding() {
     this.closeTopPadding();

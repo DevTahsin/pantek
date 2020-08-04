@@ -7,6 +7,27 @@
     "paths": {
       "jszip": [
         "node_modules/jszip/dist/jszip.min.js"
+      ],
+      "@app/*": [
+        "src/app/*"
+      ],
+      "@admin/*": [
+        "src/app/layout/admin/admin"
+      ],
+      "@environments/*": [
+        "src/environments/*"
+      ],
+      "globalize": [
+        "node_modules/globalize/dist/globalize"
+      ],
+      "globalize/*": [
+        "node_modules/globalize/dist/globalize/*"
+      ],
+      "cldr": [
+        "node_modules/cldrjs/dist/cldr"
+      ],
+      "cldr/*": [
+        "node_modules/cldrjs/dist/cldr/*"
       ]
     }
   },

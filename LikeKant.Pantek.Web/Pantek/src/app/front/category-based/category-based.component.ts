@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FrontComponent } from 'src/app/layout/front/front.component';
+import { Subscription } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
+import { Meta, Title } from '@angular/platform-browser';
 
 interface Product {
     id: string;
@@ -13,11 +16,11 @@ interface Product {
     templateUrl: './category-based.component.html',
     styleUrls: ['./category-based.component.scss']
 })
-export class CategoryBasedComponent implements OnInit {
+export class CategoryBasedComponent {
 
     kategori;
     data: Product[];
-    constructor(private route: ActivatedRoute) {
+    constructor(private route: ActivatedRoute, public translate: TranslateService, private meta:Meta, private title:Title) {
         this.kategori = this.route.snapshot.paramMap.get('name');
         this.data = [{
             id: '1',
@@ -36,8 +39,6 @@ export class CategoryBasedComponent implements OnInit {
             name: 'DSL 100 0.4',
             image: 'https://via.placeholder.com/500x600'
         }];
-    }
-    ngOnInit(): void {
     }
 
 }

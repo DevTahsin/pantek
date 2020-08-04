@@ -1,5 +1,5 @@
 <div class="ashade-page-title-wrap">
-    <h1 class="ashade-page-title"><span>&nbsp;</span>Ürünler</h1>
+    <h1 class="ashade-page-title"><span>{{'SAYFALAR.URUNLER.SOL-BASLIK-ACIKLAMA' | translate}}</span>{{'SAYFALAR.URUNLER.SOL-BASLIK' | translate}}</h1>
 </div>
 
 <main class="ashade-content-wrap">
@@ -24,7 +24,7 @@
                                     <div class="align-right">
                                         <a [routerLink]="group.link" class="ashade-learn-more">Devamı</a>
                                     </div>
-                                    <a [routerLink]="group.link" class="ashade-album-item__link"></a>
+                                    <a [href]="group.link" class="ashade-album-item__link"></a>
                                 </div>
                             </div>
                             <hr>

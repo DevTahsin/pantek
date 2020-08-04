@@ -40,9 +40,11 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "allowedCommonJsDependencies" : [
-            "devextreme"
+            "devextreme",
+            "globalize",
+            "cldr"
             ],
-            "outputPath": "dist/Pantek",
+            "outputPath": "dist/Pantek/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -183,7 +185,8 @@
             "tsConfig": [
               "tsconfig.app.json",
               "tsconfig.spec.json",
-              "e2e/tsconfig.json"
+              "e2e/tsconfig.json",
+              "tsconfig.server.json"
             ],
             "exclude": [
               "**/node_modules/**"

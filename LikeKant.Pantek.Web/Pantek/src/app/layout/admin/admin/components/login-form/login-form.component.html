@@ -1,32 +1,30 @@
 <dx-validation-group>
     <div class="login-header">
         <div class="title">{{appInfo.title}}</div>
-        <div>Sign In to your account</div>
+        <div>Hesabınıza giriş yapın</div>
     </div>
     <div class="dx-field">
-        <dx-text-box [(value)]="login" placeholder="Login" width="100%">
+        <dx-text-box [(value)]="login" placeholder="Kullanıcı Adı" width="100%">
             <dx-validator>
-                <dxi-validation-rule type="required" message="Login is required"></dxi-validation-rule>
+                <dxi-validation-rule type="required" message="Kullanıcı Adı gereklidir"></dxi-validation-rule>
             </dx-validator>
         </dx-text-box>
     </div>
     <div class="dx-field">
-        <dx-text-box mode="password" [(value)]="password" placeholder="Password" width="100%">
+        <dx-text-box mode="password" [(value)]="password" placeholder="Parola" width="100%">
             <dx-validator>
-                <dxi-validation-rule type="required" message="Password is required"></dxi-validation-rule>
+                <dxi-validation-rule type="required" message="Parola gereklidir"></dxi-validation-rule>
             </dx-validator>
         </dx-text-box>
     </div>
     <div class="dx-field">
-        <dx-check-box [value]="false" text="Remember me"></dx-check-box>
+        <dx-check-box [value]="false" text="Beni Hatırla"></dx-check-box>
     </div>
     <div class="dx-field">
-        <dx-button type="default" text="Login" (onClick)="onLoginClick($event)" width="100%"></dx-button>
-    </div>
-    <div class="dx-field">
-        <a routerLink="/recovery">Forgot password ?</a>
-    </div>
-    <div class="dx-field">
-        <dx-button type="normal" text="Create an account" width="100%"></dx-button>
+        <dx-button id="button" text="Giriş Yap" (onClick)="onLoginClick($event)" [disabled]="loading" width="100%">
+        <div *dxTemplate="let data of 'content'">
+            <span class='dx-button-text'>{{loading?'Giriş Yapılıyor': 'Giriş Yap'}}</span>
+        </div>
+        </dx-button>
     </div>
 </dx-validation-group>

@@ -9,6 +9,7 @@ import { AboutComponent } from './about/about.component';
 import { ProductsComponent } from './products/products.component';
 import { CategoryBasedComponent } from './category-based/category-based.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 const routes: Routes = [
   {
@@ -30,7 +31,8 @@ const routes: Routes = [
     ProductsComponent, CategoryBasedComponent, ProductDetailComponent],
   imports: [
     RouterModule.forChild(routes),
-    CommonModule
+    CommonModule,
+    TranslateModule
   ],
   exports: [RouterModule]
 })

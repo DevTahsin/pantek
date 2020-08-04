@@ -11,3 +11,19 @@
     margin: 0;
   }
 }
+
+::ng-deep #small-indicator, #medium-indicator, #large-indicator {
+  vertical-align: middle;
+  margin-right: 10px;
+}
+::ng-deep #button,
+::ng-deep #button .dx-button-content {
+  padding: 0;
+}
+::ng-deep #button .button-indicator {
+  height: 32px;
+  width: 32px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 5px;
+}
