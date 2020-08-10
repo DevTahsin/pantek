@@ -1,14 +1,14 @@
 <!-- Content -->
-<div class="ashade-albums-carousel-wrap">
+<div class="ashade-albums-carousel-wrap" *ngIf="data">
     <div class="ashade-albums-carousel is-medium" id="albums_carousel">
-        <div class="ashade-album-item" *ngFor="let product of data">
+        <div class="ashade-album-item" *ngFor="let product of data.products">
             <div class="ashade-album-item__inner">
-                <img [src]="product.image" alt="52" width="1000" height="1200">
+                <img [src]="product.image+'?width=1000'" alt="52" width="1000" height="1200">
                 <div class="ashade-album-item__overlay"></div>
                 <div class="ashade-album-item__title">
                     <h2>{{product.name}}</h2>
                 </div>
-                <a [href]="'/product/'+product.id" class="ashade-button">Devamı</a>
+                <a [href]="product.link" class="ashade-button">Devamı</a>
             </div>
         </div>
     </div><!-- .ashade-albums-carousel -->

@@ -15,5 +15,7 @@ namespace LikeKant.Pantek.Core.Entities
         [StringLength(50)]
         public string Name { get; set; }
         public bool IsDeleted { get; set; }
+
+        public ICollection<Group> Groups { get; set; } 
     }
 }

@@ -1,5 +1,14 @@
 import { Component, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+import {
+  Router,
+  Event as RouterEvent,
+  NavigationStart,
+  NavigationEnd,
+  NavigationCancel,
+  NavigationError
+} from '@angular/router'
+declare var window;
 interface Scripts {
   name: string;
   src: string;
@@ -25,7 +34,12 @@ export const ScriptStore = [
 export class AppComponent {
 
   private loadedScripts: Scripts[] = [];
-  constructor(@Inject(DOCUMENT) private document: Document) {
+  public showOverlay = true;
+  constructor(@Inject(DOCUMENT) private document: Document, private router: Router) {
+
+    router.events.subscribe((event: RouterEvent) => {
+      this.navigationInterceptor(event)
+    })
   }
 
   loadStyle(styleName: string) {
@@ -46,6 +60,26 @@ export class AppComponent {
     }
   }
 
+  // Shows and hides the loading spinner during RouterEvent changes
+  navigationInterceptor(event: RouterEvent): void {
+    if (event instanceof NavigationStart) {
+      this.showOverlay = true;
+    }
+    if (event instanceof NavigationEnd) {
+      this.showOverlay = false;
+      window.ga('set', 'page', event.urlAfterRedirects);
+      window.ga('send', 'pageview');
+    }
+
+    // Set loading state to false in both of the below events to hide the spinner in case a request fails
+    if (event instanceof NavigationCancel) {
+      this.showOverlay = false;
+    }
+    if (event instanceof NavigationError) {
+      this.showOverlay = false;
+    }
+  }
+
   removeAllScripts() {
     this.loadedScripts.forEach(element => {
       const eleman = this.document.getElementsByName(element.name)[0];
@@ -58,6 +92,28 @@ export class AppComponent {
   loadScripts(data: Scripts[]) {
     this.removeAllScripts();
     this.loadedScripts = [...data];
+    for (let i = 0; i < data.length; i++) {
+      const node = this.document.createElement('script');
+      node.src = data[i].src;
+      node.id = data[i].name;
+      node.type = 'text/javascript';
+      node.async = false;
+      node.charset = 'utf-8';
+      this.document.getElementsByTagName('body')[0].appendChild(node);
+    }
+  }
+
+  addFrontScripts() {
+    const data = [
+      { name: 'core', src: '/assets/js/core.js' },
+      { name: "ashade-ribbon", src: "/assets/js/ashade-ribbon.js" },
+      { name: "ashade-slider", src: "/assets/js/ashade-slider.js" }];
+    data.forEach(element => {
+      const eleman = this.document.getElementsByName(element.name)[0];
+      if (eleman) {
+        eleman.parentNode.removeChild(eleman);
+      }
+    });
     for (let i = 0; i < data.length; i++) {
       const node = this.document.createElement('script');
       node.src = data[i].src;

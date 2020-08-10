@@ -1,51 +1,89 @@
 {
-    "MENU":{
-        "ANASAYFA": "HOMEPAGE",
-        "HAKKIMIZDA": "ABOUT US",
-        "URUNLER": "PRODUCTS",
-        "HABERLER": "NEWS",
-        "ILETISIM": "CONTACT"
+  "LOADING": "Loading...",
+  "TWITTER": "",
+  "INSTAGRAM": "",
+  "FACEBOOK": "",
+  "YOUTUBE": "",
+  "MENU": {
+    "ANASAYFA": "HOMEPAGE",
+    "HAKKIMIZDA": "ABOUT US",
+    "URUNLER": "PRODUCTS",
+    "HABERLER": "NEWS",
+    "ILETISIM": "CONTACT"
+  },
+  "BASA-DON": "BACK TO TOP",
+  "NOT-FOUND": {
+    "TEXT": "THE PAGE YOU REQUESTED COULD NOT FOUND",
+    "RETURN-HOME": "RETURN HOMEPAGE",
+    "DESCRIPTION": "The page you requested coul not found in PANTEK",
+    "TITLE": "404 Page not Found | PANTEK"
+  },
+  "ALT-BILGI": "© Copyright 2015 - 2020 Pantek Makine Elektronik Sanayi ve Ticaret Limited Şirketi. All rights reserved.",
+  "SAYFALAR": {
+    "ANASAYFA": {
+      "META-BASLIK": "PANTEK",
+      "META-ACIKLAMA": "Pantek Makine Elektronik Sanayi ve Ticaret LTD.ŞTİ offical web adress.",
+      "SOL-BASLIK": "Explore products",
+      "SOL-BASLIK-ACIKLAMA": "Visit launch to see products",
+      "SAG-BASLIK": "Contact us",
+      "SAG-BASLIK-ACIKLAMA": "Contact for Offer and Product Information"
     },
-    "ALT-BILGI": "© Copyright 2015 - 2020 Pantek Makine Elektronik Sanayi ve Ticaret Limited Şirketi. All rights reserved.",
-    "SAYFALAR": {
-      "ANASAYFA": {
-          "META-BASLIK": "PANTEK",
-          "META-ACIKLAMA": "Pantek Makine Elektronik Sanayi ve Ticaret LTD.ŞTİ offical web adress.",
-          "SOL-BASLIK": "Explore products",
-          "SOL-BASLIK-ACIKLAMA":"Visit launch to see products",
-          "SAG-BASLIK": "Contact us",
-          "SAG-BASLIK-ACIKLAMA": "Contact for Offer and Product Information"
+    "HAKKIMIZDA": {
+      "META-BASLIK": "About - PANTEK",
+      "META-ACIKLAMA": "PANTEK is Peoples Republic of China, Redjet a manufacturer of sound, lighting and stage equipment Stage Technology Equipment CO, LTD of online sales consultants in the world market also those producers in Turkey (sales, import, technical support and technical services) has been established to carry out their activities. Our goal is to move the production line in China to Turkey collaborations with manufacturers in China.",
+      "SOL-BASLIK": "ABOUT US",
+      "SOL-BASLIK-ACIKLAMA": "WHO ARE WE?"
+    },
+    "URUNLER": {
+      "META-BASLIK": "Products - PANTEK",
+      "META-ACIKLAMA": "PANTEK Product categories: DMX Light Control, Stage Lighting, Stage Equipment and VFX Machines.",
+      "SOL-BASLIK": "PRODUCTS",
+      "SOL-BASLIK-ACIKLAMA": "PRODUCT LAUNCH",
+      "KATEGORI": "CATEGORY",
+      "URUN": "PRODUCT",
+      "GRUP": "GROUP"
+    },
+    "URUN-DETAY": {
+      "BASLIK-GORSELLER": "PRODUCT IMAGES AND VIDEOS",
+      "BASLIK-URUN-HAKKINDA": "ABOUT PRODUCT",
+      "SAG-GERI-BASLIK": "BACK",
+      "SAG-GERİ-BASLIK-ACIKLAMA": "RETURN BACK"
+    },
+    "HABERLER": {
+      "META-BASLIK": "News - PANTEK",
+      "META-ACIKLAMA": "Recent developments in PANTEK. Our new products and new development news.",
+      "SOL-BASLIK": "NEWS",
+      "SOL-BASLIK-ACIKLAMA": "Our future products and developments",
+      "DEVAMINI-OKU":"Read more"
+    },
+    "ILETISIM": {
+      "ANAYAZI": "Thank you for your interest in our products. In order to get more detailed information about the products, offer and contact our company, you can choose the following contact methods or send your question directly via the contact form. We guarantee that we will get back to you as soon as your question has been submitted.",
+      "ILETISIM-YONTEMLERI": {
+        "BASLIK": "COMMUNICATION METHODS",
+        "ADRES": "Adalet Mah.Manas Bul.Folkart Towers No:39 Kapı:3201 Bayraklı İZMİR/TURKEY",
+        "TELEFON": "+90 (850) 241 1956",
+        "MAIL": "info@redjetstage.com"
       },
-      "HAKKIMIZDA": {
-        "META-BASLIK": "About - PANTEK",
-        "META-ACIKLAMA": "PANTEK is Peoples Republic of China, Redjet a manufacturer of sound, lighting and stage equipment Stage Technology Equipment CO, LTD of online sales consultants in the world market also those producers in Turkey (sales, import, technical support and technical services) has been established to carry out their activities. Our goal is to move the production line in China to Turkey collaborations with manufacturers in China.",
-        "SOL-BASLIK": "ABOUT US",
-        "SOL-BASLIK-ACIKLAMA": "WHO ARE WE?"
-      },
-      "URUNLER": {
-        "META-BASLIK": "Products - PANTEK",
-        "META-ACIKLAMA": "PANTEK Product categories: DMX Light Control, Stage Lighting, Stage Equipment and VFX Machines.",
-        "SOL-BASLIK": "PRODUCTS",
-        "SOL-BASLIK-ACIKLAMA": "PRODUCT LAUNCH"
-      },
-      "URUN-DETAY": {
-        "BASLIK-GORSELLER": "PRODUCT IMAGES AND VIDEOS",
-        "BASLIK-URUN-HAKKINDA": "ABOUT PRODUCT",
-        "SAG-GERI-BASLIK": "BACK",
-        "SAG-GERİ-BASLIK-ACIKLAMA": "RETURN BACK"
-      },
-      "HABERLER": {
-        "META-BASLIK": "News - PANTEK",
-        "META-ACIKLAMA": "Recent developments in PANTEK. Our new products and new development news.",
-        "SOL-BASLIK": "NEWS",
-        "SOL-BASLIK-ACIKLAMA":"Our future products and developments"
-      },
-      "ILETISIM": {
-        "META-BASLIK": "Contact - PANTEK",
-        "META-ACIKLAMA": "Contact PANTEK via this page for questions, opinions and offers related to a product.",
-        "SOL-BASLIK": "CONTACT",
-        "SOL-BASLIK-ACIKLAMA":"Contact for Offer and Product Information"
+      "META-BASLIK": "Contact - PANTEK",
+      "META-ACIKLAMA": "Contact PANTEK via this page for questions, opinions and offers related to a product.",
+      "SOL-BASLIK": "CONTACT",
+      "SOL-BASLIK-ACIKLAMA": "Contact for Offer and Product Information",
+      "FORM": {
+        "ISIM": "Name",
+        "EMAIL": "Email",
+        "PHONE": "Phone Number",
+        "SORU": "Your question, opinion or offer about a product or our company.",
+        "BUTON": "SEND",
+        "HATALAR": {
+          "ISIM-GEREKLI": "Name is required",
+          "TELEFON-GEREKLI": "Phone number is required",
+          "TELEFON-GECERLI": "Please enter a valid phone number",
+          "EMAIL-GEREKLI": "EMail is required",
+          "EMAIL-GECERLI": "Please enter a valid email",
+          "SORU-GEREKLI": "Message is required",
+          "SORU-GECERLI": "Message field can be up to 1500 characters"
+        }
       }
     }
   }
-  
+}

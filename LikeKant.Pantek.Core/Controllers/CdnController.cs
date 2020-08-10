@@ -21,18 +21,19 @@ namespace LikeKant.Pantek.Core.Controllers
         {
             _env = env;
         }
-        [HttpPost, DisableRequestSizeLimit, Route("image")]
+        [HttpPost, Authorize, DisableRequestSizeLimit, Route("image")]
         public IActionResult Upload([FromForm] IFormFile file)
         {
             try
             {
-                var pathToSave = Path.Combine(_env.WebRootPath, "images");
-
+                var pathToSave = Path.Combine(_env.WebRootPath, "assets","cdn","images");
+                if (!Directory.Exists(pathToSave))
+                    Directory.CreateDirectory(pathToSave);
                 if (file.Length > 0)
                 {
                     var fileName = System.Guid.NewGuid().ToString("N").ToUpper()+""+Path.GetExtension(file.FileName);
                     var fullPath = Path.Combine(pathToSave, fileName);
-                    var dbPath = Path.Combine("images", fileName);
+                    var dbPath = Path.Combine("assets", "cdn", "images", fileName);
 
                     using (var stream = new FileStream(fullPath, FileMode.Create))
                     {
@@ -46,9 +47,9 @@ namespace LikeKant.Pantek.Core.Controllers
                     return BadRequest();
                 }
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
-                return StatusCode(500, $"Internal server error: {ex}");
+                return StatusCode(500, $"Sunucu da bir hata gerçekleşti, {ex.Message}");
             }
         }
     }

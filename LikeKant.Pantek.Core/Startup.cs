@@ -57,10 +57,51 @@ namespace LikeKant.Pantek.Core
             {
                 o.UseGeneralRoutePrefix("api");
             });
+            services.AddSpaStaticFiles(configuration =>
+            {
+                configuration.RootPath = "api";
+            });
             // configure strongly typed settings objects
             var appSettingsSection = Configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSection);
 
+            services.AddRendertron(options =>
+            {
+                // rendertron service url
+                options.RendertronUrl = "http://localhost:3000/render/";
+
+                // proxy url for application
+                options.AppProxyUrl = "http://wwww.panteknoloji.com";
+
+                // prerender for firefox
+                //options.UserAgents.Add("firefox");
+                options.UserAgents = new List<string>
+                {
+                    "googlebot",
+                    "bingbot",
+                    "yandexbot",
+                    "duckduckbot",
+                    "slurp",
+                    // link bots
+                    "twitterbot",
+                    "facebookexternalhit",
+                    "linkedinbot",
+                    "embedly",
+                    "baiduspider",
+                    "pinterest",
+                    "slackbot",
+                    "vkShare",
+                    "facebot",
+                    "outbrain",
+                    "W3C_Validator"
+                };
+
+                // inject shady dom
+                options.InjectShadyDom = true;
+
+                // use http compression
+                options.AcceptCompression = true;
+            });
             // configure jwt authentication
             var appSettings = appSettingsSection.Get<AppSettings>();
             var key = Encoding.ASCII.GetBytes(appSettings.Secret);
@@ -95,7 +136,7 @@ namespace LikeKant.Pantek.Core
         .SetRequestParser<QueryCollectionRequestParser>()
         .Configure<PhysicalFileSystemCacheOptions>(options =>
         {
-            options.CacheFolder = "is-cache";
+            options.CacheFolder = "assets/cdn/is-cache";
         })
         .SetCache(provider =>
         {
@@ -128,20 +169,16 @@ namespace LikeKant.Pantek.Core
             //        spa.UseAngularCliServer(npmScript: "start");
             //    }
             //});
-
-            app.UseImageSharp();
-            app.UseStaticFiles();
-            //app.UseHttpsRedirection();
-
-            app.UseRouting();
-
-            // global cors policy
             app.UseCors(x => x
                 .SetIsOriginAllowed(origin => true)
                 .AllowAnyMethod()
                 .AllowAnyHeader()
                 .AllowCredentials());
+            app.UseImageSharp();
+            //app.UseStaticFiles();
 
+            app.UseRendertron();
+            app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
             app.UseMvc(routeBuilder =>
@@ -150,6 +187,19 @@ namespace LikeKant.Pantek.Core
                 routeBuilder.Select().Expand().Count().Filter().OrderBy().MaxTop(100).SkipToken().Build();
                 routeBuilder.MapODataServiceRoute("odata", "odata", GetEdmModel());
             });
+            app.UseSpaStaticFiles();
+            app.UseSpa(spa =>
+            {
+                // To learn more about options for serving an Angular SPA from ASP.NET Core,
+                // see https://go.microsoft.com/fwlink/?linkid=864501
+
+                spa.Options.SourcePath = "api";
+            });
+            //app.UseHttpsRedirection();
+
+
+            // global cors policy
+
 
             //app.UseEndpoints(x => x.MapControllers());
         }
@@ -158,8 +208,11 @@ namespace LikeKant.Pantek.Core
         {
             var odataBuilder = new ODataConventionModelBuilder();
             odataBuilder.EntitySet<Log>("Logs");
+            odataBuilder.EntitySet<Language>("Languages");
 
             return odataBuilder.GetEdmModel();
         }
     }
+
+
 }

@@ -1,0 +1,21 @@
+<h2 class="content-block">Genel Ayarlar</h2>
+
+<div class="content-block">
+    <div class="dx-card responsive-paddings">
+        <div id="fileuploader-container">
+            <app-image-upload [isLogo]="true"></app-image-upload>
+        </div>
+    </div>
+</div>
+<div class="content-block">
+    <app-language-tab (change)="languageChanged($event)" [isCodeNeed]="true"></app-language-tab>
+</div>
+<div class="content-block">
+    <json-editor [options]="editorOptions" [data]="data"></json-editor>
+</div>
+<div class="content-block">
+    <div class="float-right margin-top">
+        <dx-button icon="save" text="kaydet" type="success" (click)="saveLanguage()"></dx-button>
+        <dx-button text="Temizle" class="margin-left" (click)="clearLanguage()"></dx-button>
+    </div>
+</div>

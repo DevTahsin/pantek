@@ -1,0 +1,193 @@
+<h2 class="content-block">Ürün Ayarları</h2>
+
+<div class="content-block">
+    <app-language-tab (change)="languageChanged($event)"></app-language-tab>
+</div>
+
+<div class="content-block">
+    <dx-button text="KATEGORİ EKLE" (click)="categoryClear(); categoryPopup=true;"></dx-button>
+    <dx-tabs class="margin-top" #apiTabs [dataSource]="categoryTabs" [selectedIndex]="0"
+        (onItemClick)="categoriesChanged($event)" itemTemplate="tabItem">
+        <div *dxTemplate="let itemData of 'tabItem'">
+            <dx-button icon="trash" (click)="categoryDelete(itemData.name, itemData.id)"></dx-button>
+            <dx-button icon="edit" class="margin-left"
+                (click)="category = {id:itemData.id,name:itemData.name};categoryPopup=true;"></dx-button>
+            {{itemData.name}}
+        </div>
+    </dx-tabs>
+</div>
+
+<div class="content-block">
+    <dx-button text="GRUP EKLE" (click)="groupClear(); groupPopup=true;"></dx-button>
+    <dx-tabs class="margin-top" [dataSource]="groupTabs" [selectedIndex]="0" (onItemClick)="groupsChanged($event)"
+        itemTemplate="tabItem">
+        <div *dxTemplate="let itemData of 'tabItem'">
+            <dx-button icon="trash" (click)="categoryDelete(itemData.name, itemData.id)"></dx-button>
+            <dx-button icon="edit" class="margin-left"
+                (click)="group = {id:itemData.id,name:itemData.name,imageUrl: itemData.imageURL, description: itemData.description,categoryId: group.categoryId};groupPopup=true;">
+            </dx-button>
+            {{itemData.name}}
+        </div>
+    </dx-tabs>
+</div>
+
+<div class="content-block">
+    <dx-data-grid id="gridContainer" [dataSource]="productDataSource" [repaintChangesOnly]="true" [showBorders]="true">
+        <dxi-column dataField="Id" [allowFiltering]="false" [allowSorting]="false" cellTemplate="butonlarHucresi"
+            headerCellTemplate="idAlaniTemplate" [width]="100">
+        </dxi-column>
+        <dxi-column [visible]="false" [allowEditing]="false">
+            <div *dxTemplate="let info of 'idAlaniTemplate'">
+            </div>
+            <div *dxTemplate="let data of 'butonlarHucresi'">
+                <a (click)="editProduct(data.row.data)" class="dx-link">Düzenle</a>
+                <a (click)="productDelete(data.row.data.title, data.value)" class="dx-link m-left-c">Sil</a>
+            </div>
+        </dxi-column>
+        <dxi-column dataField="title" caption="Ürün Adı"></dxi-column>
+        <dxi-column dataField="metaDescription" caption="Ürün SEO açıklaması"></dxi-column>
+    </dx-data-grid>
+</div>
+<div class="content-block dx-card responsive-paddings">
+    <div class="bs-row">
+        <dx-validation-group #productValidation>
+            <div class="col-lg-3 col-sm-12">
+                <dx-text-box [(value)]="product.title" placeholder="Ürün Adını giriniz">
+                    <dx-validator>
+                        <dxi-validation-rule type="required" message="Ürün Adı zorunludur"></dxi-validation-rule>
+                    </dx-validator>
+                </dx-text-box>
+            </div>
+            <div class="col-lg-3 col-sm-12">
+                <dx-select-box *ngIf="!!product.id" [(value)]="product.groupId" [items]="groupTabs" displayExpr="name" valueExpr="id">
+                    <dx-validator>
+                        <dxi-validation-rule type="required" message="Grup zorunludur"></dxi-validation-rule>
+                    </dx-validator>
+                </dx-select-box>
+            </div>
+            <div class="col-lg-6 col-sm-12">
+                <dx-text-area style="width:100%;height:75px" [(value)]="product.metaDescription" [maxLength]="4000"
+                    placeholder="SEO için açıklama">
+                    <dx-validator>
+                        <dxi-validation-rule type="required" message="SEO için açıklama zorunludur">
+                        </dxi-validation-rule>
+                    </dx-validator>
+                </dx-text-area>
+            </div>
+            <div class="col-lg-12 col-sm-12">
+                <app-image-upload (uploaded)="productImageUploaded($event)" [altTextVisible]="true"></app-image-upload>
+                <div class="gallery margin-top" *ngFor="let d of product.images">
+                    <a target="_blank" [href]="d.imageURL">
+                        <img [src]="d.imageURL+'?width=400'">
+                    </a>
+                    <dx-button (click)="productImageDelete(d.id, d.imageURL)" text="SİL" type="danger"></dx-button>
+                    <!-- <dx-number-box [value]="d.order" (onValueChanged)="orderChanged($event, d.id)" [showSpinButtons]="true"></dx-number-box> -->
+                </div>
+            </div>
+            <div class="col-lg-12 col-sm-12 margin-top">
+                <dx-html-editor height="550px" #htmlEditor>
+                    <dxo-toolbar [multiline]="true">
+                        <dxi-item formatName="undo"></dxi-item>
+                        <dxi-item formatName="redo"></dxi-item>
+                        <dxi-item formatName="separator"></dxi-item>
+                        <dxi-item formatName="size"
+                            [formatValues]="['8pt', '10pt', '12pt', '14pt', '18pt', '24pt', '36pt']">
+                        </dxi-item>
+                        <dxi-item formatName="font"
+                            [formatValues]="['Arial', 'Courier New', 'Georgia', 'Impact', 'Lucida Console', 'Tahoma', 'Times New Roman', 'Verdana']">
+                        </dxi-item>
+                        <dxi-item formatName="separator"></dxi-item>
+                        <dxi-item formatName="bold"></dxi-item>
+                        <dxi-item formatName="italic"></dxi-item>
+                        <dxi-item formatName="strike"></dxi-item>
+                        <dxi-item formatName="underline"></dxi-item>
+                        <dxi-item formatName="separator"></dxi-item>
+                        <dxi-item formatName="alignLeft"></dxi-item>
+                        <dxi-item formatName="alignCenter"></dxi-item>
+                        <dxi-item formatName="alignRight"></dxi-item>
+                        <dxi-item formatName="alignJustify"></dxi-item>
+                        <dxi-item formatName="separator"></dxi-item>
+                        <dxi-item formatName="orderedList"></dxi-item>
+                        <dxi-item formatName="bulletList"></dxi-item>
+                        <dxi-item formatName="separator"></dxi-item>
+                        <dxi-item formatName="header" [formatValues]="[false, 1, 2, 3, 4, 5]"></dxi-item>
+                        <dxi-item formatName="separator"></dxi-item>
+                        <dxi-item formatName="color"></dxi-item>
+                        <dxi-item formatName="background"></dxi-item>
+                        <dxi-item formatName="separator"></dxi-item>
+                        <dxi-item formatName="link"></dxi-item>
+                        <dxi-item formatName="separator"></dxi-item>
+                        <dxi-item formatName="clear"></dxi-item>
+                        <dxi-item formatName="codeBlock"></dxi-item>
+                        <dxi-item widget="dxButton" [options]="toolbarButtonOptions"></dxi-item>
+                        <dxi-item formatName="blockquote"></dxi-item>
+                    </dxo-toolbar>
+                    <dxo-media-resizing [enabled]=true>
+                    </dxo-media-resizing>
+                </dx-html-editor>
+
+                <dx-popup [showTitle]="true" [width]="500" title="Resim Ekle" [(visible)]="popup.image">
+                    <dx-text-box placeholder="Resim Açıklaması" [(value)]="altText"></dx-text-box>
+                    <app-image-upload [isUploadActive]="!!altText" (uploaded)="imageUploaded($event)">
+                    </app-image-upload>
+                </dx-popup>
+            </div>
+            <div class="col-lg-12 col-sm-12">
+                <div class="float-right margin-top">
+                    <dx-button icon="save" text="kaydet" type="success" (click)="productSave()"></dx-button>
+                    <dx-button text="Temizle" class="margin-left" (click)="productClear()"></dx-button>
+                </div>
+            </div>
+        </dx-validation-group>
+    </div>
+</div>
+
+<dx-popup [showTitle]="true" [width]="350" title="Kategori Ekle/Düzenle" [(visible)]="categoryPopup">
+    <dx-validation-group #categoryValidation>
+        <div class="dx-field">
+            <div class="dx-field-label dx-field-label-top">Kategori Adı</div>
+            <dx-text-box class="dx-field-value" [(value)]="category.name">
+                <dx-validator>
+                    <dxi-validation-rule type="required" message="Kategori adı zorunludur"></dxi-validation-rule>
+                </dx-validator>
+            </dx-text-box>
+        </div>
+        <dx-button class="float-right margin-top" icon="save" type="success" text="Kaydet" (click)="categorySave()">
+        </dx-button>
+    </dx-validation-group>
+</dx-popup>
+
+<dx-popup [showTitle]="true" [width]="500" title="Grup Ekle/Düzenle" [(visible)]="groupPopup">
+    <dx-validation-group #groupValidation>
+        <div class="dx-field" *ngIf="!!group.id">
+            <div class="dx-field-label dx-field-label">Kategorisi</div>
+            <dx-select-box [(value)]="group.categoryId" [items]="categoryTabs" displayExpr="name" valueExpr="id">
+                <dx-validator>
+                    <dxi-validation-rule type="required" message="Kategori zorunludur"></dxi-validation-rule>
+                </dx-validator>
+            </dx-select-box>
+        </div>
+        <div class="dx-field">
+            <dx-text-box [(value)]="group.name" placeholder="Grup Adı" style="width:100%;">
+                <dx-validator>
+                    <dxi-validation-rule type="required" message="Grup adı zorunludur"></dxi-validation-rule>
+                </dx-validator>
+            </dx-text-box>
+        </div>
+        <div class="dx-field">
+            <dx-text-area style="width:100%;height:75px" [(value)]="group.description" [maxLength]="500"
+                placeholder="Açıklama">
+                <dx-validator>
+                    <dxi-validation-rule type="required" message="Grup açıklaması zorunludur"></dxi-validation-rule>
+                </dx-validator>
+            </dx-text-area>
+        </div>
+        <div class="dx-field">
+            <app-image-upload [gorselUrl]="group.imageUrl" (uploaded)="groupImageUploaded($event)"
+                (deleted)="groupImageDeleted()">
+            </app-image-upload>
+        </div>
+        <dx-button class="float-right margin-top" icon="save" type="success" text="Kaydet" (click)="groupSave()">
+        </dx-button>
+    </dx-validation-group>
+</dx-popup>

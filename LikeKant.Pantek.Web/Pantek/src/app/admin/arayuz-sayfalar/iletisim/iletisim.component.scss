@@ -1,0 +1,43 @@
+.gosterim-tablo {
+    tr {
+        height: 30px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        td:first-child {
+            font-weight: bold;
+            width: 120px;
+        }
+    }
+}
+.okundu-gosterim {
+    tr {
+        height: 30px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        .read {
+            padding: 3px;
+            background-color: #ff8100;
+            width: 30px;
+            border: 1px solid rgba(0, 0, 0, 0.7);
+        }
+        .not-read {
+            padding: 3px;
+            background-color: transparent;
+            width: 30px;
+            border: 1px solid rgba(0, 0, 0, 0.7);
+        }
+        td:nth-child(2) {
+            padding-left: 10px;
+        }
+        td:nth-child(3) {
+            padding-left:4px;
+        }
+    }
+}
+
+.colored-row {
+    background-color: #ff8100;
+    color: white;
+
+    .dx-link {
+        color: #000;
+    }
+}

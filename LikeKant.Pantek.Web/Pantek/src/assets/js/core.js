@@ -1008,7 +1008,9 @@ ashade.init = function() {
 	
 	// Kenburns Sliders
 	if (jQuery('.ashade-kenburns-slider').length) {
-		ashade.kenburns.init();
+		if(ashade.kenburns){
+			ashade.kenburns.init();
+		}
 	}
 
 	// Tiny Slider
@@ -1133,7 +1135,11 @@ ashade.init = function() {
 				this_item.w = item_size[0];
 				this_item.h = item_size[1];
 			}
-			this_item.src = $this.attr('href');
+			let real = $this.attr('href');
+			if($this.attr('href').split('?').length > 0){
+				this.real = $this.attr('href').split('?')[0];
+			}
+			this_item.src = real+'?width='+this_item.w;
 			
 			if ( $this.data('caption') ) {
 				this_item.title = $this.data('caption');
@@ -1182,38 +1188,38 @@ ashade.init = function() {
 	}
 	
 	// Contact Form
-	if (jQuery('form.ashade-contact-form').length) {
-		jQuery('form.ashade-contact-form').each(function() {
-			let $this = jQuery(this),
-				$response = $this.find('.ashade-contact-form__response'),
-				formData;
+	// if (jQuery('form.ashade-contact-form').length) {
+	// 	jQuery('form.ashade-contact-form').each(function() {
+	// 		let $this = jQuery(this),
+	// 			$response = $this.find('.ashade-contact-form__response'),
+	// 			formData;
 			
-			$this.submit(function(e) {
-				e.preventDefault();
-				formData = jQuery(this).serialize();
-				jQuery.ajax({
-					type: 'POST',
-					url: $this.attr('action'),
-					data: formData
-				})
-				.done(function(response) {
-					$response.empty().removeClass('alert-danger').addClass('alert-success');
-					$response.html('<span>' + response + '</span>');
-					setTimeout(function () {
-						//$response.find('span').fadeOut();
-					}, 2000);
-        			$this.find('input:not([type="submit"]), textarea').val('');
-				})
-				.fail(function(data) {
-					$response.empty().removeClass('alert-success').addClass('alert-danger');
-					$response.html('<span>' + data.responseText) + '</span>';
-					setTimeout(function () {
-						//$response.find('span').fadeOut();
-					}, 2000);
-				});
-			});
-		});
-	}
+	// 		$this.submit(function(e) {
+	// 			e.preventDefault();
+	// 			formData = jQuery(this).serialize();
+	// 			jQuery.ajax({
+	// 				type: 'POST',
+	// 				url: $this.attr('action'),
+	// 				data: formData
+	// 			})
+	// 			.done(function(response) {
+	// 				$response.empty().removeClass('alert-danger').addClass('alert-success');
+	// 				$response.html('<span>' + response + '</span>');
+	// 				setTimeout(function () {
+	// 					//$response.find('span').fadeOut();
+	// 				}, 2000);
+    //     			$this.find('input:not([type="submit"]), textarea').val('');
+	// 			})
+	// 			.fail(function(data) {
+	// 				$response.empty().removeClass('alert-success').addClass('alert-danger');
+	// 				$response.html('<span>' + data.responseText) + '</span>';
+	// 				setTimeout(function () {
+	// 					//$response.find('span').fadeOut();
+	// 				}, 2000);
+	// 			});
+	// 		});
+	// 	});
+	// }
 	
 	// Spacer
 	jQuery('.ashade-spacer').each(function() {

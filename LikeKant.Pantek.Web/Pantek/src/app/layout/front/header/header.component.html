@@ -1,8 +1,8 @@
 <header id="ashade-header">
     <div class="ashade-header-inner">
         <div class="ashade-logo-block">
-            <a routerLink="/" class="ashade-logo is-retina">
-                <img src="https://via.placeholder.com/64" alt="Logo">
+            <a href="/" class="ashade-logo is-retina">
+                <img src="/assets/logo/logo-64x64.png" alt="Logo">
             </a>
         </div>
         <div class="ashade-nav-block">
@@ -28,7 +28,7 @@
                             {{selectedLanguage}} <span class="caret"></span> </a>
                         <ul class="sub-menu">
                             <li class="current-menu-item" *ngFor="let language of languages">
-                                <a (click)="changeLanguage(language.code)" href="#">
+                                <a [href]="'?lang='+language.code">
                                     <img [src]="language.flagUrl" width="24px" />{{language.name}}</a>
                             </li>
                         </ul>

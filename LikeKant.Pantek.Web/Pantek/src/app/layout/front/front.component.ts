@@ -53,9 +53,6 @@ export class FrontComponent implements OnInit, AfterViewInit {
       { name: "photoswipe-ui-default", src: "/assets/js/photoswipe-ui-default.min.js" },
       { name: "photoswipe", src: "/assets/js/photoswipe.min.js" },
       { name: "tiny-slider", src: "/assets/js/tiny-slider.js" },
-      { name: 'core', src: '/assets/js/core.js' },
-      { name: "ashade-ribbon", src: "/assets/js/ashade-ribbon.js" },
-      { name: "ashade-slider", src: "/assets/js/ashade-slider.js" }
     ]);
   }
   openTopPadding() {

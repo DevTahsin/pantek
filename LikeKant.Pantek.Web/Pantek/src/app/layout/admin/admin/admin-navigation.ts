@@ -5,17 +5,22 @@ export const navigation = [
     icon: 'home'
   },
   {
-    text: 'Examples',
-    icon: 'folder',
+    text: 'Sayfalar',
+    icon: 'file',
     items: [
-      {
-        text: 'Profile',
-        path: '/admin/profile'
-      },
-      {
-        text: 'Display Data',
-        path: '/admin/display-data'
-      }
+      {text: 'Anasayfa', path:'/admin/sayfalar/anasayfa'},
+      {text: 'Ürunler', path:'/admin/sayfalar/urunler'},
+      {text: 'İletişim', path:'/admin/sayfalar/iletisim'},
+      {text: 'Haberler', path:'/admin/sayfalar/haberler'},
+      {text: 'Hakkımızda', path:'/admin/sayfalar/hakkimizda'}
+    ]
+  },
+  {
+    text: 'Ayarlar',
+    icon: 'preferences',
+    items: [
+      {text: 'Çoklu Dil', path:'/admin/ayarlar/coklu-dil'},
+      {text: 'Genel Ayarlar', path:'/admin/ayarlar/genel-ayarlar'}
     ]
   },
   {

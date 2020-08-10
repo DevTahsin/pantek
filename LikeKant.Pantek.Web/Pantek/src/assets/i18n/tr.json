@@ -1,51 +1,93 @@
 {
-    "MENU":{
-        "ANASAYFA": "ANASAYFA",
-        "HAKKIMIZDA": "HAKKIMIZDA",
-        "URUNLER": "ÜRÜNLER",
-        "HABERLER": "HABERLER",
-        "ILETISIM": "İLETİŞİM"
+  "LOADING": "Yükleniyor...",
+  "TWITTER": "",
+  "INSTAGRAM": "",
+  "FACEBOOK": "",
+  "YOUTUBE": "",
+  "MENU": {
+    "ANASAYFA": "ANASAYFA",
+    "HAKKIMIZDA": "HAKKIMIZDA",
+    "URUNLER": "ÜRÜNLER",
+    "HABERLER": "HABERLER",
+    "ILETISIM": "İLETİŞİM"
+  },
+  "BASA-DON": "BAŞA DÖN",
+  "ALT-BILGI": "© Copyright 2015 - 2020 Pantek Makine Elektronik Sanayi ve Ticaret Limited Şirketi. Her Hakkı Saklıdır.",
+  "NOT-FOUND": {
+    "TEXT": "ARADIĞINIZ SAYFA BULUNAMADI",
+    "RETURN-HOME": "ANASAYFAYA DÖN",
+    "DESCRIPTION": "Pantek'te aranan sayfa bulunamadı",
+    "TITLE": "404 Sayfa bulunamadı | PANTEK"
+  },
+  "SAYFALAR": {
+    "ANASAYFA": {
+      "META-BASLIK": "PANTEK",
+      "META-ACIKLAMA": "Pantek Makine Elektronik Sanayi ve Ticaret LTD.ŞTİ Resmi web adresidir.",
+      "SOL-BASLIK": "ÜRÜNLERİMİZİ KEŞFEDİN",
+      "SOL-BASLIK-ACIKLAMA": "ÜRÜNLERİMİZİ GÖRMEK İÇİN LANSMANIMIZI ZİYARET EDİN",
+      "SAG-BASLIK": "İLETİŞİME GEÇİN",
+      "SAG-BASLIK-ACIKLAMA": "TEKLİF VE ÜRÜN BİLGİSİ İÇİN İLETİŞİME GEÇİN"
     },
-    "ALT-BILGI": "© Copyright 2015 - 2020 Pantek Makine Elektronik Sanayi ve Ticaret Limited Şirketi. Her Hakkı Saklıdır.",
-    "SAYFALAR": {
-      "ANASAYFA": {
-          "META-BASLIK": "PANTEK",
-          "META-ACIKLAMA": "Pantek Makine Elektronik Sanayi ve Ticaret LTD.ŞTİ Resmi web adresidir.",
-          "SOL-BASLIK": "ÜRÜNLERİMİZİ KEŞFEDİN",
-          "SOL-BASLIK-ACIKLAMA":"ÜRÜNLERİMİZİ GÖRMEK İÇİN LANSMANIMIZI ZİYARET EDİN",
-          "SAG-BASLIK": "İLETİŞİME GEÇİN",
-          "SAG-BASLIK-ACIKLAMA": "TEKLİF VE ÜRÜN BİLGİSİ İÇİN İLETİŞİME GEÇİN"
+    "HAKKIMIZDA": {
+      "META-BASLIK": "Hakkımızda - PANTEK",
+      "META-ACIKLAMA": "PANTEK Çin Halk Cumhuriyet'indeki ses, ışık ve sahne ekipmanları üreticisi olan Redjet Stage Technology Equipment CO;LTD firmasının dünya pazarındaki online satış danışmanlığını ayrıca bu üreticinin Türkiye'deki (satış, ithalat, teknik destek ve teknik servis) faaliyetlerini yürütmek için kurulmuştur. Amacımız Çin'deki üretici firma ile birlikte ortak çalışmalar yaparak Çin'deki üretim bandını da Türkiye'ye taşımaktır.",
+      "SOL-BASLIK": "HAKKIMIZDA",
+      "SOL-BASLIK-ACIKLAMA": "BİZ KİMİZ?"
+    },
+    "URUNLER": {
+      "META-BASLIK": "Ürünler - PANTEK",
+      "META-ACIKLAMA": "PANTEK Ürün kategorileri: DMX Işık Kontrol, Sahne Aydınlatma, Sahne Ekipmanları ve Efekt Makinaları.",
+      "SOL-BASLIK": "ÜRÜNLER",
+      "SOL-BASLIK-ACIKLAMA": "ÜRÜN LANSMANIMIZ",
+      "KATEGORI": "KATEGORİ",
+      "URUN": "ÜRÜN",
+      "GRUP": "GRUP"
+    },
+    "URUN-DETAY": {
+      "BASLIK-GORSELLER": "ÜRÜN GÖRSELLERİ VE VİDEOLARI",
+      "SAG-GERI-BASLIK": "GERİ",
+      "SAG-GERİ-BASLIK-ACIKLAMA": "DÖNÜŞ YAP"
+    },
+    "HABER-DETAY": {
+      "BASLIK-GORSELLER": "HABER GÖRSELLERİ VE VİDEOLARI",
+      "SAG-GERI-BASLIK": "GERİ",
+      "SAG-GERİ-BASLIK-ACIKLAMA": "DÖNÜŞ YAP"
+    },
+    "HABERLER": {
+      "META-BASLIK": "Haberler - PANTEK",
+      "META-ACIKLAMA": "PANTEK'te son gelişmeler. Yeni ürünlerimiz ve yeni geliştirme haberlerimiz.",
+      "SOL-BASLIK": "HABERLER",
+      "SOL-BASLIK-ACIKLAMA": "Gelecek ürünlerimiz ve gelişmelerimiz",
+      "DEVAMINI-OKU":"Devamını Oku"
+    },
+    "ILETISIM": {
+      "ANAYAZI": "Ürünlerimize ilgi duyduğunuz için teşekkür ederiz. Ürünler hakkında daha detaylı bilgi almak, teklif ve şirketimiz ile iletişime geçmek için aşağıda bulunan iletişim yöntemlerini tercih edebilir veya direk iletişim formu ile sorunuzu iletebilirsiniz. Sorunuz iletildikten mutlak kısa sürede geri dönüş sağlayacağımızı garanti ediyoruz.",
+      "ILETISIM-YONTEMLERI": {
+        "BASLIK": "İLETİŞİM YÖNTEMLERİ",
+        "ADRES": "Adalet Mah.Manas Bul.Folkart Towers No:39 Kapı:3201 Bayraklı İZMİR/TURKEY",
+        "TELEFON": "+90 (850) 241 1956",
+        "MAIL": "info@redjetstage.com"
       },
-      "HAKKIMIZDA": {
-        "META-BASLIK": "Hakkımızda - PANTEK",
-        "META-ACIKLAMA": "PANTEK Çin Halk Cumhuriyet'indeki ses, ışık ve sahne ekipmanları üreticisi olan Redjet Stage Technology Equipment CO;LTD firmasının dünya pazarındaki online satış danışmanlığını ayrıca bu üreticinin Türkiye'deki (satış, ithalat, teknik destek ve teknik servis) faaliyetlerini yürütmek için kurulmuştur. Amacımız Çin'deki üretici firma ile birlikte ortak çalışmalar yaparak Çin'deki üretim bandını da Türkiye'ye taşımaktır.",
-        "SOL-BASLIK": "HAKKIMIZDA",
-        "SOL-BASLIK-ACIKLAMA": "BİZ KİMİZ?"
-      },
-      "URUNLER": {
-        "META-BASLIK": "Ürünler - PANTEK",
-        "META-ACIKLAMA": "PANTEK Ürün kategorileri: DMX Işık Kontrol, Sahne Aydınlatma, Sahne Ekipmanları ve Efekt Makinaları.",
-        "SOL-BASLIK": "ÜRÜNLER",
-        "SOL-BASLIK-ACIKLAMA": "ÜRÜN LANSMANIMIZ"
-      },
-      "URUN-DETAY": {
-        "BASLIK-GORSELLER": "ÜRÜN GÖRSELLERİ VE VİDEOLARI",
-        "BASLIK-URUN-HAKKINDA": "ÜRÜN HAKKINDA",
-        "SAG-GERI-BASLIK": "GERİ",
-        "SAG-GERİ-BASLIK-ACIKLAMA": "DÖNÜŞ YAP"
-      },
-      "HABERLER": {
-        "META-BASLIK": "Haberler - PANTEK",
-        "META-ACIKLAMA": "PANTEK'te son gelişmeler. Yeni ürünlerimiz ve yeni geliştirme haberlerimiz.",
-        "SOL-BASLIK": "HABERLER",
-        "SOL-BASLIK-ACIKLAMA":"Gelecek ürünlerimiz ve gelişmelerimiz"
-      },
-      "ILETISIM": {
-        "META-BASLIK": "İletişim - PANTEK",
-        "META-ACIKLAMA": "Bir ürünle alakalı sorunuz, görüşünüz ve teklifleriniz için bu sayfa aracılığıyla PANTEK ile iletişime geçin.",
-        "SOL-BASLIK": "İLETİŞİM",
-        "SOL-BASLIK-ACIKLAMA":"Teklif ve Ürün Bilgisi için iletişime geçin"
+      "META-BASLIK": "İletişim - PANTEK",
+      "META-ACIKLAMA": "Bir ürünle alakalı sorunuz, görüşünüz ve teklifleriniz için bu sayfa aracılığıyla PANTEK ile iletişime geçin.",
+      "SOL-BASLIK": "İLETİŞİM",
+      "SOL-BASLIK-ACIKLAMA": "Teklif ve Ürün Bilgisi için iletişime geçin",
+      "FORM" : {
+        "ISIM": "İsminiz",
+        "EMAIL": "E-Posta adresiniz",
+        "PHONE": "Telefon numaranız",
+        "SORU": "Bir ürün veya firmamızla alakalı sorunuz, görüşünüz veya teklifiniz.",
+        "BUTON": "GÖNDER",
+        "HATALAR": {
+          "ISIM-GEREKLI": "İsim girmek zorunludur",
+          "TELEFON-GEREKLI": "Telefon numarası zorunludur",
+          "TELEFON-GECERLI": "Lütfen geçerli bir telefon numarası giriniz",
+          "EMAIL-GEREKLI": "EPosta adresi zorunludur",
+          "EMAIL-GECERLI": "Lütfen geçerli bir eposta adresi giriniz",
+          "SORU-GEREKLI": "Mesaj girmek zorunludur",
+          "SORU-GECERLI": "Maksimum 1500 karakter girebilirsiniz"
+        }
       }
     }
   }
-  
+}

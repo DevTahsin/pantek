@@ -344,3 +344,5 @@ healthchecksdb
 *.png
 *.gif
 *.mp4
+
+api/

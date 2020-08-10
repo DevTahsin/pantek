@@ -8,19 +8,20 @@
   <ItemGroup>
     <Compile Remove="Migrations\20200801131225_initial.cs" />
     <Compile Remove="Migrations\20200801131225_initial.Designer.cs" />
+    <Compile Remove="Migrations\20200805175817_languageIdAutoIncrement.cs" />
+    <Compile Remove="Migrations\20200805175817_languageIdAutoIncrement.Designer.cs" />
+    <Compile Remove="Migrations\20200805180310_languageIdAutoIncrement.cs" />
+    <Compile Remove="Migrations\20200805180310_languageIdAutoIncrement.Designer.cs" />
+    <Compile Remove="Migrations\20200805180748_languageIdAutoIncrement.cs" />
+    <Compile Remove="Migrations\20200805180748_languageIdAutoIncrement.Designer.cs" />
+    <Compile Remove="Migrations\20200805203910_HomePageImagesAdded.cs" />
+    <Compile Remove="Migrations\20200805203910_HomePageImagesAdded.Designer.cs" />
+    <Compile Remove="Migrations\20200806180649_AboutPageAdded.cs" />
+    <Compile Remove="Migrations\20200806180649_AboutPageAdded.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="api\images\image.jpg" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="api\images\image.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
+    <PackageReference Include="Galamai.AspNetCore.Rendertron" Version="1.0.0.13" />
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.14.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.6" />
     <PackageReference Include="Microsoft.AspNetCore.OData" Version="7.4.1" />

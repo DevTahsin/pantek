@@ -54,4 +54,6 @@ export class HeaderComponent implements OnInit {
       this.selectedLanguage = found.name;
     }
   }
+  
+  
 }

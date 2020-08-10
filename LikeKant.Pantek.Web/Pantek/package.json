@@ -7,9 +7,7 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "build-themes": "devextreme build",
-    "postinstall": "npm run build-themes"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
@@ -25,10 +23,12 @@
     "@angular/router": "~10.0.4",
     "@ngx-translate/core": "^13.0.0",
     "@ngx-translate/http-loader": "^6.0.0",
+    "ang-jsoneditor": "^1.9.4",
     "devextreme": "20.1-stable",
     "devextreme-angular": "20.1-stable",
     "devextreme-schematics": "^1.2.2",
     "express": "^4.15.2",
+    "jsoneditor": "^9.0.3",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"

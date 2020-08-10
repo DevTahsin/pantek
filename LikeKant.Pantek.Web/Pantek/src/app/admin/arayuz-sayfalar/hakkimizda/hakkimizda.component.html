@@ -1,0 +1,53 @@
+<h2 class="content-block">Hakkımızda Ayarları</h2>
+
+<div class="content-block">
+    <app-language-tab (change)="languageChanged($event)"></app-language-tab>
+</div>
+
+<div class="content-block">
+    <dx-html-editor height="550px" #htmlEditor>
+        <dxo-toolbar [multiline]="true">
+            <dxi-item formatName="undo"></dxi-item>
+            <dxi-item formatName="redo"></dxi-item>
+            <dxi-item formatName="separator"></dxi-item>
+            <dxi-item formatName="size" [formatValues]="['8pt', '10pt', '12pt', '14pt', '18pt', '24pt', '36pt']">
+            </dxi-item>
+            <dxi-item formatName="font"
+                [formatValues]="['Arial', 'Courier New', 'Georgia', 'Impact', 'Lucida Console', 'Tahoma', 'Times New Roman', 'Verdana']">
+            </dxi-item>
+            <dxi-item formatName="separator"></dxi-item>
+            <dxi-item formatName="bold"></dxi-item>
+            <dxi-item formatName="italic"></dxi-item>
+            <dxi-item formatName="strike"></dxi-item>
+            <dxi-item formatName="underline"></dxi-item>
+            <dxi-item formatName="separator"></dxi-item>
+            <dxi-item formatName="alignLeft"></dxi-item>
+            <dxi-item formatName="alignCenter"></dxi-item>
+            <dxi-item formatName="alignRight"></dxi-item>
+            <dxi-item formatName="alignJustify"></dxi-item>
+            <dxi-item formatName="separator"></dxi-item>
+            <dxi-item formatName="orderedList"></dxi-item>
+            <dxi-item formatName="bulletList"></dxi-item>
+            <dxi-item formatName="separator"></dxi-item>
+            <dxi-item formatName="header" [formatValues]="[false, 1, 2, 3, 4, 5]"></dxi-item>
+            <dxi-item formatName="separator"></dxi-item>
+            <dxi-item formatName="color"></dxi-item>
+            <dxi-item formatName="background"></dxi-item>
+            <dxi-item formatName="separator"></dxi-item>
+            <dxi-item formatName="link"></dxi-item>
+            <dxi-item formatName="separator"></dxi-item>
+            <dxi-item formatName="clear"></dxi-item>
+            <dxi-item formatName="codeBlock"></dxi-item>
+            <dxi-item widget="dxButton" [options]="toolbarButtonOptions"></dxi-item>
+            <dxi-item formatName="blockquote"></dxi-item>
+            <dxi-item widget="dxButton" [options]="toolbarSaveButtonOptions"></dxi-item>
+        </dxo-toolbar>
+        <dxo-media-resizing [enabled]=true>
+        </dxo-media-resizing>
+    </dx-html-editor>
+
+    <dx-popup [showTitle]="true" [width]="500" title="Resim Ekle" [(visible)]="popup.image">
+        <dx-text-box placeholder="Resim Açıklaması" [(value)]="altText" ></dx-text-box>
+        <app-image-upload [isUploadActive]="!!altText" (uploaded)="imageUploaded($event)"></app-image-upload>
+    </dx-popup>
+</div>

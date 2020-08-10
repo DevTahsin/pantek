@@ -1,4 +1,4 @@
-import { NgModule, APP_INITIALIZER } from '@angular/core';
+import { NgModule, APP_INITIALIZER, LOCALE_ID } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -8,9 +8,7 @@ import { SideNavOuterToolbarModule, SideNavInnerToolbarModule, SingleCardModule 
 import { FooterModule, LoginFormModule } from './components';
 import { AuthService, ScreenService, AppInfoService } from './services';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-
 import { JwtInterceptor, ErrorInterceptor, appInitializer } from './services';
-
 @NgModule({
   declarations: [AdminComponent ],
   imports: [
@@ -25,7 +23,9 @@ import { JwtInterceptor, ErrorInterceptor, appInitializer } from './services';
   ],
   providers: [
     ScreenService, 
-    AppInfoService
+    AppInfoService,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ]
 })
 export class AdminModule { }

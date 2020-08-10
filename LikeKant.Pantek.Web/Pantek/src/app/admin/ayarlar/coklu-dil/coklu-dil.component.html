@@ -1,0 +1,71 @@
+<h2 class="content-block">Çoklu Dil Ayarları</h2>
+
+<div class="content-block">
+    <div class="bs-row">
+        <div class="col-lg-4 col-sm-12">
+            <div class="dx-card responsive-paddings">
+                <dx-form id="form" [formData]="language">
+                    <dxi-item itemType="group" [colCount]="1">
+                        <dxi-item itemType="group" [colCount]="2">
+                            <dxi-item dataField="Name">
+                                <dxo-label text="Dil"></dxo-label>
+                                <dxi-validation-rule type="required" message="Dil ismi gereklidir">
+                                </dxi-validation-rule>
+                            </dxi-item>
+                            <dxi-item dataField="Code">
+                                <dxo-label text="Dil Kodu"></dxo-label>
+                                <dxi-validation-rule type="required" message="Dil kodu gereklidir">
+                                </dxi-validation-rule>
+                            </dxi-item>
+                        </dxi-item>
+                        <dxi-item itemType="group" [colCount]="2">
+                            <dxi-item dataField="FlagUrl" [colSpan]="1">
+                                <dxo-label text="Bayrak resmi linki"></dxo-label>
+                                <dxi-validation-rule type="required" message="Bayrak resmi linki gereklidir">
+                                </dxi-validation-rule>
+                            </dxi-item>
+                            <dxi-item dataField="Order" [colSpan]="1">
+                                <dxo-label text="Sıra Numarası"></dxo-label>
+                                <dxi-validation-rule type="required" message="Sıra numarası gereklidir">
+                                </dxi-validation-rule>
+                            </dxi-item>
+                            <dxi-item dataField="IsDefault" [colSpan]="2">
+                                <dxo-label text="Varsayılan dil mi?"></dxo-label>
+                            </dxi-item>
+                            <dxi-item class="float-right" [colSpan]="2">
+                                <dx-button-group [items]="[saveButton, clearButton]">
+                                </dx-button-group>
+                            </dxi-item>
+                        </dxi-item>
+                    </dxi-item>
+                </dx-form>
+            </div>
+        </div>
+        <div class="col-lg-8 col-sm-12">
+            <dx-data-grid id="gridContainer" class="responsive-paddings" [dataSource]="dataSource"
+                [repaintChangesOnly]="true" [showBorders]="true">
+                <dxi-column dataField="Id" [allowFiltering]="false"
+                    [allowSorting]="false" cellTemplate="butonlarHucresi" headerCellTemplate="idAlaniTemplate"
+                    [width]="100">
+                </dxi-column>
+                <dxi-column [visible]="false" [allowEditing]="false">
+                    <div *dxTemplate="let info of 'idAlaniTemplate'">
+                    </div>
+                    <div *dxTemplate="let data of 'butonlarHucresi'">
+                        <a (click)="edit(data.row.data)" class="dx-link">Düzenle</a>
+                        <a (click)="delete(data.value)" class="dx-link m-left-c">Sil</a>
+                    </div>
+                </dxi-column>
+                <dxi-column dataField="Name" caption="Dil"></dxi-column>
+                <dxi-column dataField="Code" caption="Kod"></dxi-column>
+                <dxi-column dataField="Order" sortOrder="asc" [allowSorting]="false" caption="Sıra"></dxi-column>
+                <dxi-column dataField="Version" caption="Versiyon" [visible]="false"></dxi-column>
+                <dxi-column dataField="FlagUrl" cellTemplate="flagImageTemplate" caption="Bayrak"></dxi-column>
+                <dxi-column dataField="IsDefault" caption="Varsayılan"></dxi-column>
+                <div *dxTemplate="let data of 'flagImageTemplate'">
+                    <img width="32px" [src]="data.value" />
+                </div>
+            </dx-data-grid>
+        </div>
+    </div>
+</div>

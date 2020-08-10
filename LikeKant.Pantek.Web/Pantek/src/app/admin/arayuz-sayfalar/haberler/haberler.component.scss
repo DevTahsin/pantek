@@ -1,0 +1,32 @@
+.margin-top {
+    margin-top: 10px;
+}
+div.gallery {
+    margin: 5px;
+    border: 1px solid rgba(255,255,255, 0.4);;
+    float: left;
+    width: 180px;
+  }
+  
+  div.gallery:hover {
+    border: 1px solid rgba(255,255,255, 0.7);
+  }
+  
+  div.gallery img {
+    width: 100%;
+    height: auto;
+  }
+  
+  div.desc {
+    padding: 15px;
+    text-align: center;
+  }
+  
+  div.gallery dx-button {
+    display: block;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+  }

@@ -11,6 +11,7 @@ namespace LikeKant.Pantek.Core.Entities
         [Key]
         public int Id { get; set; }
         public int CategoryId { get; set; }
+        public Category Category { get; set; }
         [StringLength(100)]
         public string Name { get; set; }
         [StringLength(100)]
@@ -18,5 +19,7 @@ namespace LikeKant.Pantek.Core.Entities
         [StringLength(500)]
         public string Description { get; set; }
         public bool IsDeleted { get; set; }
+
+        public ICollection<Product> Products { get; set; }
     }
 }

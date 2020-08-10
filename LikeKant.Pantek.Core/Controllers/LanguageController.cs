@@ -12,7 +12,7 @@ namespace LikeKant.Pantek.Core.Controllers
     [Authorize]
     [ApiController]
     [Route("[controller]")]
-    public class LanguageController: ControllerBase
+    public class LanguageController : ControllerBase
     {
         private ILanguageService _service;
         public LanguageController(ILanguageService service)
@@ -22,12 +22,18 @@ namespace LikeKant.Pantek.Core.Controllers
 
         [AllowAnonymous]
         [HttpGet("for")]
-        public IActionResult Get()
+        public IActionResult GetForFront()
         {
             return Ok(_service.Query()
                 .Where(t => !t.IsDeleted)
-                .Select(t => new { t.Name, t.Code, t.FlagUrl,t.Order, t.IsDefault })
+                .Select(t => new { t.Name, t.Code, t.FlagUrl, t.Order, t.IsDefault })
                 );
+        }
+
+        [HttpGet]
+        public IActionResult Get()
+        {
+            return Ok(_service.Query().Where(t => !t.IsDeleted).OrderBy(t =>t.Order).Select(t => new { t.Id, t.Name, t.Code, t.FlagUrl, IsSelected = t.IsDefault }));
         }
     }
 }

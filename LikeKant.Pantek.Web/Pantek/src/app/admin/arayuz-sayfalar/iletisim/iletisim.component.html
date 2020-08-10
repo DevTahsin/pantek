@@ -1,0 +1,68 @@
+<div class="content-block">
+    <h2>İletişim'den gelen mesajlar</h2>
+</div>
+<div class="content-block">
+    <table class="okundu-gosterim">
+        <tr>
+            <td class="read"></td>
+            <td>Okunmayan mesaj adeti:</td>
+            <td>{{okunmadiCount}}</td>
+        </tr>
+        <tr>
+            <td class="not-read"></td>
+            <td>Okunan mesaj sayisi:</td>
+            <td>{{okunduCount}}</td>
+        </tr>
+    </table>
+</div>
+<div class="content-block">
+    <dx-data-grid id="gridContainer" [dataSource]="messages" [repaintChangesOnly]="true" [showBorders]="true" (onRowPrepared)="rowYuklendi($event)">
+        <dxi-column dataField="Id" [allowFiltering]="false" [allowSorting]="false" cellTemplate="butonlarHucresi"
+            headerCellTemplate="idAlaniTemplate" [width]="150">
+        </dxi-column>
+        <dxi-column [visible]="false" [allowEditing]="false">
+            <div *dxTemplate="let info of 'idAlaniTemplate'">
+            </div>
+            <div *dxTemplate="let data of 'butonlarHucresi'">
+                <a (click)="show(data.row.data)" class="dx-link m-left-c">Göster</a>
+                &nbsp;
+                <a *ngIf="!data.row.data.isRead" (click)="read(data.row.data.id)" class="dx-link">Okundu</a>
+            </div>
+        </dxi-column>
+        <dxi-column dataField="insertTime" caption="Kayıt Tarihi" dataType="datetime" width="200"></dxi-column>
+        <dxi-column dataField="name" caption="Gönderen"></dxi-column>
+        <dxi-column dataField="phone" caption="Telefon No"></dxi-column>
+        <dxi-column dataField="email" caption="Email"></dxi-column>
+        <dxi-column dataField="ipAddress" caption="IP Adresi"></dxi-column>
+    </dx-data-grid>
+</div>
+
+
+<dx-popup [showTitle]="true" [width]="500" title="Mesaj içeriği" [(visible)]="mesajPopup">
+    <table class="gosterim-tablo">
+        <tr>
+            <td>İsim:</td>
+            <td>{{message.name}}</td>
+        </tr>
+        <tr>
+            <td>Telefon No:</td>
+            <td>{{message.phone}}</td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td>{{message.email}}</td>
+        </tr>
+        <tr>
+            <td>Gönderim Tarihi:</td>
+            <td>{{message.insertTime | date:'full'}}</td>
+        </tr>
+        <tr>
+            <td>Ip Adresi:</td>
+            <td>{{message.ipAddress}}</td>
+        </tr>
+        <tr>
+            <td>Mesaj:</td>
+            <td>{{message.message}}</td>
+        </tr>
+    </table>
+</dx-popup>

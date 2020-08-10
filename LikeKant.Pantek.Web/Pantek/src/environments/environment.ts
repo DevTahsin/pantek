@@ -7,6 +7,7 @@ export const environment = {
   apiUrl: 'http://192.168.1.3:63841/api',
   odataUrl: 'http://192.168.1.3:63841/odata',
   domain: 'http://192.168.1.3:4200',
+  imagePathBase: 'http://192.168.1.3:63841/'
 };
 
 /*

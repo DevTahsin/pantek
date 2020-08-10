@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, APP_INITIALIZER } from '@angular/core';
+import { NgModule, APP_INITIALIZER, LOCALE_ID } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -8,6 +8,10 @@ import { AuthService, ErrorInterceptor, JwtInterceptor, appInitializer } from '.
 import { HTTP_INTERCEPTORS, HttpClientModule, HttpClient } from '@angular/common/http';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import localeTR from '@angular/common/locales/tr';
+import { registerLocaleData } from '@angular/common';
+import { environment } from '@environments/environment';
+registerLocaleData(localeTR);
 
 function generateGuid() {
   var value = "";
@@ -18,7 +22,7 @@ function generateGuid() {
 }
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json?v='+generateGuid());
+  return new TranslateHttpLoader(http, '/assets/i18n/', '.json?v='+generateGuid());
 }
 @NgModule({
   declarations: [
@@ -38,6 +42,7 @@ export function createTranslateLoader(http: HttpClient) {
     // FrontModule
   ],
   providers: [
+    { provide: LOCALE_ID, useValue: "tr" },
     { provide: APP_INITIALIZER, useFactory: appInitializer, multi: true, deps: [AuthService] },
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

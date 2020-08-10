@@ -1,0 +1,25 @@
+<h2 class="content-block">Anasayfa Ayarları</h2>
+
+<div class="content-block">
+    <app-language-tab (change)="languageChanged($event)"></app-language-tab>
+</div>
+
+<div class="content-block">
+    <div class="dx-card responsive-paddings">
+        <div id="fileuploader-container">
+            <app-image-upload (uploaded)="imageUploaded($event)" (deleted)="imageDeleted($event)"></app-image-upload>
+        </div>
+    </div>
+</div>
+
+<div class="content-block">
+    <div class="responsive-paddings">
+        <div class="gallery" *ngFor="let d of images">
+            <a target="_blank" [href]="d.imageUrl">
+                <img [src]="d.imageUrl+'?width=400'">
+            </a>
+            <dx-button (click)="delete(d.id)" text="SİL" type="danger"></dx-button>
+            <dx-number-box [value]="d.order" (onValueChanged)="orderChanged($event, d.id)" [showSpinButtons]="true"></dx-number-box>
+        </div>
+    </div>
+</div>

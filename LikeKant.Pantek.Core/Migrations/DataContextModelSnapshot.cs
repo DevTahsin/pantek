@@ -19,6 +19,26 @@ namespace LikeKant.Pantek.Core.Migrations
                 .HasAnnotation("ProductVersion", "3.1.6")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
+            modelBuilder.Entity("LikeKant.Pantek.Core.Entities.AboutPage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("Html")
+                        .HasColumnType("text");
+
+                    b.Property<int>("LanguageId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LanguageId");
+
+                    b.ToTable("AboutPages");
+                });
+
             modelBuilder.Entity("LikeKant.Pantek.Core.Entities.Category", b =>
                 {
                     b.Property<int>("Id")
@@ -41,6 +61,44 @@ namespace LikeKant.Pantek.Core.Migrations
                     b.HasIndex("LanguageId");
 
                     b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("LikeKant.Pantek.Core.Entities.ContactMessage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("Email")
+                        .HasColumnType("character varying(50)")
+                        .HasMaxLength(50);
+
+                    b.Property<string>("IPAdress")
+                        .HasColumnType("character varying(30)")
+                        .HasMaxLength(30);
+
+                    b.Property<DateTime>("InsertTime")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<bool>("IsRead")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("Message")
+                        .HasColumnType("character varying(1500)")
+                        .HasMaxLength(1500);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("character varying(50)")
+                        .HasMaxLength(50);
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("character varying(20)")
+                        .HasMaxLength(20);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ContactMessages");
                 });
 
             modelBuilder.Entity("LikeKant.Pantek.Core.Entities.Group", b =>
@@ -70,7 +128,36 @@ namespace LikeKant.Pantek.Core.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CategoryId");
+
                     b.ToTable("Groups");
+                });
+
+            modelBuilder.Entity("LikeKant.Pantek.Core.Entities.HomePageImage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("character varying(250)")
+                        .HasMaxLength(250);
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<int>("LanguageId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Order")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LanguageId");
+
+                    b.ToTable("HomePageImages");
                 });
 
             modelBuilder.Entity("LikeKant.Pantek.Core.Entities.Language", b =>
@@ -78,6 +165,7 @@ namespace LikeKant.Pantek.Core.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:IdentitySequenceOptions", "'100', '1', '', '', 'False', '1'")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<string>("Code")
@@ -180,6 +268,71 @@ namespace LikeKant.Pantek.Core.Migrations
                     b.ToTable("Logs");
                 });
 
+            modelBuilder.Entity("LikeKant.Pantek.Core.Entities.New", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("InnerHTML")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("InsertTime")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<int>("LanguageId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("MetaDescription")
+                        .HasColumnType("character varying(4000)")
+                        .HasMaxLength(4000);
+
+                    b.Property<string>("Title")
+                        .HasColumnType("character varying(400)")
+                        .HasMaxLength(400);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LanguageId");
+
+                    b.ToTable("News");
+                });
+
+            modelBuilder.Entity("LikeKant.Pantek.Core.Entities.NewImage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("AltText")
+                        .HasColumnType("character varying(150)")
+                        .HasMaxLength(150);
+
+                    b.Property<string>("ImageURL")
+                        .HasColumnType("character varying(250)")
+                        .HasMaxLength(250);
+
+                    b.Property<bool>("IsDefault")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<int>("NewId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NewId");
+
+                    b.ToTable("NewImages");
+                });
+
             modelBuilder.Entity("LikeKant.Pantek.Core.Entities.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -199,10 +352,6 @@ namespace LikeKant.Pantek.Core.Migrations
                     b.Property<string>("MetaDescription")
                         .HasColumnType("character varying(4000)")
                         .HasMaxLength(4000);
-
-                    b.Property<string>("MetaTitle")
-                        .HasColumnType("character varying(1000)")
-                        .HasMaxLength(1000);
 
                     b.Property<string>("Title")
                         .HasColumnType("character varying(400)")
@@ -277,6 +426,15 @@ namespace LikeKant.Pantek.Core.Migrations
                         });
                 });
 
+            modelBuilder.Entity("LikeKant.Pantek.Core.Entities.AboutPage", b =>
+                {
+                    b.HasOne("LikeKant.Pantek.Core.Entities.Language", "Language")
+                        .WithMany()
+                        .HasForeignKey("LanguageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("LikeKant.Pantek.Core.Entities.Category", b =>
                 {
                     b.HasOne("LikeKant.Pantek.Core.Entities.Language", "Language")
@@ -286,10 +444,46 @@ namespace LikeKant.Pantek.Core.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("LikeKant.Pantek.Core.Entities.Group", b =>
+                {
+                    b.HasOne("LikeKant.Pantek.Core.Entities.Category", "Category")
+                        .WithMany("Groups")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("LikeKant.Pantek.Core.Entities.HomePageImage", b =>
+                {
+                    b.HasOne("LikeKant.Pantek.Core.Entities.Language", "Language")
+                        .WithMany("HomePageImages")
+                        .HasForeignKey("LanguageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("LikeKant.Pantek.Core.Entities.New", b =>
+                {
+                    b.HasOne("LikeKant.Pantek.Core.Entities.Language", "Language")
+                        .WithMany()
+                        .HasForeignKey("LanguageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("LikeKant.Pantek.Core.Entities.NewImage", b =>
+                {
+                    b.HasOne("LikeKant.Pantek.Core.Entities.New", "New")
+                        .WithMany("Images")
+                        .HasForeignKey("NewId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("LikeKant.Pantek.Core.Entities.Product", b =>
                 {
                     b.HasOne("LikeKant.Pantek.Core.Entities.Group", "Group")
-                        .WithMany()
+                        .WithMany("Products")
                         .HasForeignKey("GroupId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

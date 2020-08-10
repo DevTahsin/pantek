@@ -1,0 +1,112 @@
+<div class="ashade-page-title-wrap">
+    <h1 class="ashade-page-title">
+        <span>{{'SAYFALAR.ILETISIM.SOL-BASLIK-ACIKLAMA' | translate}}</span>{{'SAYFALAR.ILETISIM.SOL-BASLIK' | translate}}
+    </h1>
+</div>
+
+<main class="ashade-content-wrap">
+    <div class="ashade-content-scroll">
+        <div class="ashade-content">
+            <section class="ashade-section">
+                <div class="ashade-row">
+                    <div class="ashade-col col-12">
+                        <p class="ashade-intro">{{'SAYFALAR.ILETISIM.ANAYAZI' | translate}}</p>
+                    </div>
+                </div>
+            </section>
+            <section class="ashade-section">
+                <div class="ashade-row">
+                    <div class="ashade-col col-4">
+                        <div class="ashade-contact-details">
+                            <h4 class="ashade-contact-details__title">
+                                {{'SAYFALAR.ILETISIM.ILETISIM-YONTEMLERI.BASLIK' | translate}}
+                            </h4>
+                            <ul class="ashade-contact-details__list">
+                                <li>
+                                    <i class="ashade-contact-icon la la-map-marker"></i>
+                                    {{'SAYFALAR.ILETISIM.ILETISIM-YONTEMLERI.ADRES' | translate}}
+                                </li>
+                                <li>
+                                    <i class="ashade-contact-icon la la-phone"></i>
+                                    <a href="#">{{'SAYFALAR.ILETISIM.ILETISIM-YONTEMLERI.TELEFON' | translate}}</a>
+                                </li>
+                                <li>
+                                    <i class="ashade-contact-icon la la-envelope"></i>
+                                    <a
+                                        [href]="'mailto:'+('SAYFALAR.ILETISIM.ILETISIM-YONTEMLERI.MAIL' | translate)">{{'SAYFALAR.ILETISIM.ILETISIM-YONTEMLERI.MAIL' | translate}}</a>
+                                </li>
+                                <li class="ashade-contact-socials">
+                                    <i class="ashade-contact-icon la la-share-alt"></i>
+                                    <a [href]="'FACEBOOK' | translate" target="_blank">Fb</a>
+                                    <a [href]="'TWITTER' | translate" target="_blank">Tw</a>
+                                    <a [href]="'INSTAGRAM' | translate" target="_blank">In</a>
+                                </li>
+                            </ul>
+                        </div><!-- .ashade-contact-details -->
+                    </div><!-- .ashade-col -->
+                    <div class="ashade-col col-8">
+                        <form [formGroup]="contactForm" (ngSubmit)="onSubmit(contactForm.value)"
+                            class="ashade-contact-form">
+                            <div class="ashade-row ashade-small-gap">
+                                <div class="ashade-col col-4">
+                                    <input type="text" id="name" maxlength="50" formControlName="name" class="contact-input"
+                                        [placeholder]="'SAYFALAR.ILETISIM.FORM.ISIM' | translate" required>
+                                    <div class="error-border">
+                                        <ng-container *ngIf="name.invalid && (name.dirty || name.touched)">
+                                            <div class="error-field" *ngIf="name.hasError('required')">
+                                                * {{'SAYFALAR.ILETISIM.FORM.HATALAR.ISIM-GEREKLI' | translate}}</div>
+                                        </ng-container>
+                                    </div>
+                                </div>
+                                <div class="ashade-col col-4">
+                                    <input type="email" id="email" maxlength="50" formControlName="email" class="contact-input"
+                                        [placeholder]="'SAYFALAR.ILETISIM.FORM.EMAIL' | translate" required>
+                                    <div class="error-border">
+                                        <ng-container *ngIf="email.invalid && (email.dirty || email.touched)">
+                                            <div class="error-field" *ngIf="email.hasError('required')">
+                                                * {{'SAYFALAR.ILETISIM.FORM.HATALAR.EMAIL-GEREKLI' | translate}}</div>
+                                            <div class="error-field" *ngIf="email.hasError('email')">
+                                                * {{'SAYFALAR.ILETISIM.FORM.HATALAR.EMAIL-GECERLI' | translate}}</div>
+                                        </ng-container>
+                                    </div>
+                                </div>
+                                <div class="ashade-col col-4">
+                                    <input type="tel" id="phone" maxlength="20" formControlName="phone" class="contact-input"
+                                        [placeholder]="'SAYFALAR.ILETISIM.FORM.PHONE' | translate" required>
+                                    <div class="error-border">
+                                        <ng-container *ngIf="phone.invalid && (phone.dirty || phone.touched)">
+                                            <div class="error-field" *ngIf="phone.hasError('required')">
+                                                * {{'SAYFALAR.ILETISIM.FORM.HATALAR.TELEFON-GEREKLI' | translate}}</div>
+                                            <div class="error-field" *ngIf="phone.hasError('minlength')">
+                                                * {{'SAYFALAR.ILETISIM.FORM.HATALAR.TELEFON-GECERLI' | translate}}</div>
+                                        </ng-container>
+                                    </div>
+                                </div>
+                            </div>
+                            <textarea formControlName="message" id="message" maxlength="1500" class="contact-input"
+                                [placeholder]="'SAYFALAR.ILETISIM.FORM.SORU' | translate" required></textarea>
+                            <div class="error-border">
+                                <ng-container *ngIf="message.invalid && (message.dirty || message.touched)">
+                                    <div class="error-field" *ngIf="message.hasError('required')">
+                                        * {{'SAYFALAR.ILETISIM.FORM.HATALAR.SORU-GEREKLI' | translate}}</div>
+                                    <div class="error-field" *ngIf="phone.hasError('maxlength')">
+                                        * {{'SAYFALAR.ILETISIM.FORM.HATALAR.ISIM-GECERLI' | translate}}</div>
+                                </ng-container>
+                            </div>
+                            <div class="ashade-contact-form__footer">
+                                <div class="ashade-contact-form__response"></div>
+                                <div class="ashade-contact-form__submit">
+                                    <input type="submit" [disabled]="!contactForm.valid"
+                                        [value]="'SAYFALAR.ILETISIM.FORM.BUTON' | translate">
+                                </div>
+                            </div>
+                        </form>
+                    </div><!-- .ashade-col -->
+                </div><!-- .ashade-row -->
+            </section>
+        </div><!-- .ashade-content -->
+
+        <!-- Footer -->
+        <app-footer></app-footer>
+    </div><!-- .ashade-content-scroll -->
+</main>

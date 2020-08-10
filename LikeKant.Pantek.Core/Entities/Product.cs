@@ -17,8 +17,6 @@ namespace LikeKant.Pantek.Core.Entities
         public string InnerHTML { get; set; }
         [StringLength(4000)]
         public string MetaDescription { get; set; }
-        [StringLength(1000)]
-        public string MetaTitle { get; set; }
         public bool IsDeleted { get; set; }
 
         public ICollection<ProductImage> Images { get; set; }
