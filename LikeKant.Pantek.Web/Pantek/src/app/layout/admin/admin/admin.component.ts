@@ -45,6 +45,7 @@ export class AdminComponent implements OnInit {
     }
 
   ngOnInit(): void {
+    document.getElementById('main-loader').classList.add('loaded');
   }
 
   isAuthorized() {

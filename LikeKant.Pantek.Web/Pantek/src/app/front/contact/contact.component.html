@@ -1,7 +1,13 @@
 <div class="ashade-page-title-wrap">
-    <h1 class="ashade-page-title">
-        <span>{{'SAYFALAR.ILETISIM.SOL-BASLIK-ACIKLAMA' | translate}}</span>{{'SAYFALAR.ILETISIM.SOL-BASLIK' | translate}}
-    </h1>
+    
+	<h1 class="ashade-page-title">
+		<span>
+			<a [routerLink]="'/'+translate.currentLang+'/'">/</a>
+			>
+			<a [routerLink]="'/'+translate.currentLang+'/contact'">{{'MENU.ILETISIM'|translate}}</a>
+		</span>
+		<p>{{'SAYFALAR.ILETISIM.SOL-BASLIK' | translate}}</p>
+	</h1>
 </div>
 
 <main class="ashade-content-wrap">
@@ -105,8 +111,7 @@
                 </div><!-- .ashade-row -->
             </section>
         </div><!-- .ashade-content -->
-
-        <!-- Footer -->
         <app-footer></app-footer>
+        <!-- Footer -->
     </div><!-- .ashade-content-scroll -->
 </main>

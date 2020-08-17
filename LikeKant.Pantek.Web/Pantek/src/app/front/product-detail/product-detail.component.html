@@ -1,14 +1,35 @@
 <ng-container *ngIf="data">
-    <div class="ashade-page-title-wrap">
-        <h1 class="ashade-page-title"><span>{{data.group}}</span>{{data.header}}</h1>
+    <div id="myModal" class="modal" [ngStyle]="{'display': modalDisplay}">
+        <span class="close cursor" (click)="closeModal()">&times;</span>
+        <div class="modal-content">
+            <div class="mySlides" [ngStyle]="{'display': (slideIndex-1)==i?'block':'none'}"
+                *ngFor="let d of data.images; let i = index">
+                <img [src]="d.link" [ngStyle]="{'max-height.px': innerHeight}">
+            </div>
+            <a class="prev" (click)="plusSlides(-1)">&#10094;</a>
+            <a class="next" (click)="plusSlides(1)">&#10095;</a>
+        </div>
     </div>
-    <div class="ashade-home-return ashade-back-wrap">
+    <div class="ashade-page-title-wrap">
+        <h1 class="ashade-page-title">
+            <span>
+                <a [routerLink]="'/'+translate.currentLang+'/'">/</a>
+                >
+                <a [routerLink]="'/'+translate.currentLang+'/products'">{{'MENU.URUNLER'|translate}}</a>
+                >
+                <a [routerLink]="'/'+translate.currentLang+data.groupLink">{{data.group}}</a>
+                >
+                <a [routerLink]="'/'+translate.currentLang+data.link">{{data.header}}</a>
+            </span>
+            <p>{{data.header}}</p>
+        </h1>
+    </div>
+    <div class="ashade-back-wrap">
 
-        <div class="ashade-back is-home-return" (click)="returnBack(data.groupLink)">
+        <div class="ashade-back">
+            <span><a [routerLink]="'/'+translate.currentLang+data.groupLink">Dönüş Yap</a></span>
 
-            <span>Dönüş Yap</span>
-
-            <span>geri</span>
+            <span><a [routerLink]="'/'+translate.currentLang+data.groupLink">Geri</a></span>
 
         </div>
 
@@ -17,25 +38,59 @@
         <div class="ashade-content-scroll">
             <div class="ashade-header-holder"></div>
             <div class="ashade-content">
-                <section class="ashade-section margin-bot-50px">
-                    <div class="ashade-row">
+                <section class="ashade-section" style="margin-bottom:24px;">
+                    <!-- <div class="ashade-row">
                         <div class="ashade-col col-12 product-header">
                             <h4>
-                               {{'SAYFALAR.URUN-DETAY.BASLIK-GORSELLER' | translate}}
+                                {{'SAYFALAR.URUN-DETAY.BASLIK-GORSELLER' | translate}}
                             </h4>
                             <hr>
                         </div>
-                    </div>
-                    <div class="ashade-row">
+                    </div> -->
+                    <div class="ashade-row" #row>
                         <div class="ashade-col col-12">
-                            <div class="ashade-grid ashade-grid-4cols product-image-gallery">
+                            <div id="carousel" class="flexslider">
+                                <div class="flex-viewport">
+                                    <ul class="slides"
+                                        [ngStyle]="{'transform': 'translate3d('+latestWidth+'px, 0px, 0px)'}">
+                                        <li *ngFor="let image of data.images;let i = index">
+                                            <a (click)="openModal();currentSlide(i+1)">
+                                                <img [src]="image.link" [alt]="image.alt">
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <ul class="flex-direction-nav">
+                                    <li class="flex-nav-prev"><a class="flex-prev" href="#" role="button"
+                                            (click)="latestWidth = latestWidth?(latestWidth+150):0"
+                                            tabindex="-1">Previous</a></li>
+                                    <li class="flex-nav-next"><a class="flex-next" href="#" tabindex="-1" role="button"
+                                            (click)="latestWidth = latestWidth-150">Next</a></li>
+                                </ul>
+                            </div>
+                            <!-- <div class="horizontal-scroll-wrapper squares" [ngStyle]="{'height.px':this.maxHeight}">
+                                <div class="toBefore">
+                                    <i class="la la-angle-left"></i>
+                                </div>
+                                <div *ngFor="let image of data.images">
+                                    <a [href]="image.link" class="ashade-lightbox-link img-shadow"
+                                        data-size="1920x1080">
+                                        <img [src]="image.link" [attr.data-src]="image.link+'?width=150'" class="lazy"
+                                            [alt]="image.alt">
+                                    </a>
+                                </div>
+                                <div class="toNext" [ngStyle]="{'top.px':(this.maxHeight)}">
+                                    <i class="la la-angle-right"></i>
+                                </div>
+                            </div> -->
+                            <!-- <div class="ashade-grid ashade-grid-4cols product-image-gallery">
                                 <div class="ashade-grid-item" *ngFor="let image of data.images">
                                     <a [href]="image.link" class="ashade-lightbox-link" data-size="1920x1080">
                                         <img [src]="image.link" [attr.data-src]="image.link+'?width=150'" class="lazy"
                                             [alt]="image.alt">
                                     </a>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </section>

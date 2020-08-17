@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Title, Meta } from '@angular/platform-browser';
 import { Subscription } from 'rxjs';
@@ -14,11 +14,11 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
     templateUrl: './contact.component.html',
     styleUrls: ['./contact.component.scss']
 })
-export class ContactComponent implements OnInit, OnDestroy {
+export class ContactComponent implements OnInit, OnDestroy, AfterViewInit {
 
     contactForm: FormGroup;
     first = true;
-    constructor(private http: HttpClient, private front: FrontComponent, private meta: Meta, private title: Title, public translate: TranslateService, private app: AppComponent, private formBuilder: FormBuilder) {
+    constructor(private chn:ChangeDetectorRef, private http: HttpClient, private front: FrontComponent, private meta: Meta, private title: Title, public translate: TranslateService, private app: AppComponent, private formBuilder: FormBuilder) {
         this.contactForm = this.formBuilder.group({
             name: [null, Validators.required],
             email: [null, [Validators.required, Validators.email]],
@@ -29,21 +29,38 @@ export class ContactComponent implements OnInit, OnDestroy {
     metaSubscribe: Subscription;
     ngOnDestroy(): void {
         this.metaSubscribe.unsubscribe();
+        this.meta.removeTag("name='description'")
     }
 
     ngOnInit(): void {
         this.metaSubscribe = this.translate.onLangChange.subscribe(t => {
+            this.chn.detectChanges();
+            this.front.renderAshade();
             //   this.http.get(environment.apiUrl+'/client/about?lan='+t.lang).toPromise().then((t:any)=> {if(t){this.html = t.html} });
             this.translate.get(['SAYFALAR.ILETISIM.META-BASLIK', 'SAYFALAR.ILETISIM.META-ACIKLAMA']).toPromise().then(t => {
                 this.meta.addTag({ name: 'description', content: t['SAYFALAR.ILETISIM.META-ACIKLAMA'] })
                 this.title.setTitle(t['SAYFALAR.ILETISIM.META-BASLIK']);
             });
             if (this.first) {
-                this.app.addFrontScripts();
+                // this.app.addFrontScripts();
             }
             this.first = false;
         });
-        this.front.openTopPadding();
+        // this.front.openTopPadding();
+        document.body.classList.remove('ashade-home-template');
+        document.body.classList.add('ashade-smooth-scroll', 'has-spotlight');
+    }
+    ngAfterViewInit() {
+        this.chn.detectChanges();
+        this.front.renderAshade();
+        if(this.translate.currentLang){
+            this.translate.get(['SAYFALAR.ILETISIM.META-BASLIK', 'SAYFALAR.ILETISIM.META-ACIKLAMA']).toPromise().then(t => {
+                this.meta.removeTag("name='description'")
+                this.meta.addTag({ name: 'description', content: t['SAYFALAR.ILETISIM.META-ACIKLAMA'] })
+                this.title.setTitle(t['SAYFALAR.ILETISIM.META-BASLIK']);
+            });
+        }
+        this.front.closeLoader();
     }
     validateAllFormFields(formGroup: FormGroup) {
         Object.keys(formGroup.controls).forEach(field => {

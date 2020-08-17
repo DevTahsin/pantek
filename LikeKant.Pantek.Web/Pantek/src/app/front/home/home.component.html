@@ -7,14 +7,18 @@
 
 <!-- Home Links and Titles -->
 <div class="ashade-home-link--works ashade-home-link-wrap">
-    <div class="ashade-home-link is-link" (click)="locateHref('/products')">
-        <span>{{'SAYFALAR.ANASAYFA.SOL-BASLIK-ACIKLAMA' | translate}}</span>
-        <span>{{'SAYFALAR.ANASAYFA.SOL-BASLIK' | translate}}</span>
+    <div class="ashade-home-link is-link">
+        <a [routerLink]="'/'+translate.currentLang+'/products/'">
+            <span>{{'SAYFALAR.ANASAYFA.SOL-BASLIK-ACIKLAMA' | translate}}</span>
+            <span>{{'SAYFALAR.ANASAYFA.SOL-BASLIK' | translate}}</span>
+        </a>
     </div>
 </div><!-- .ashade-home-link-wrap -->
 <div class="ashade-home-link--contacts ashade-home-link-wrap">
-    <div class="ashade-home-link is-link" (click)="locateHref('/contact')">
-        <span>{{'SAYFALAR.ANASAYFA.SAG-BASLIK-ACIKLAMA' | translate}}</span>
-        <span>{{'SAYFALAR.ANASAYFA.SAG-BASLIK' | translate}}</span>
+    <div class="ashade-home-link is-link" (click)="locateHref('contact')">
+        <a [routerLink]="'/'+translate.currentLang+'/contact/'">
+            <span>{{'SAYFALAR.ANASAYFA.SAG-BASLIK-ACIKLAMA' | translate}}</span>
+            <span>{{'SAYFALAR.ANASAYFA.SAG-BASLIK' | translate}}</span>
+        </a>
     </div>
 </div><!-- .ashade-home-link-wrap -->

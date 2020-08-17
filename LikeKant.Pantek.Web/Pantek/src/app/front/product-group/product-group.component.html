@@ -1,5 +1,17 @@
+<ng-container  *ngIf="data">
+<div class="ashade-page-title-wrap">
+    <h1 class="ashade-page-title">
+        <span>
+            <a [routerLink]="'/'+translate.currentLang+'/'">/</a>
+            >
+            <a [routerLink]="'/'+translate.currentLang+'/products'">{{'MENU.URUNLER'|translate}}</a>
+            >
+            <a [routerLink]="data.link">{{data.name}}</a>
+        </span><p>{{data.name}}</p>
+    </h1>
+</div>
 <!-- Content -->
-<div class="ashade-albums-carousel-wrap" *ngIf="data">
+<div class="ashade-albums-carousel-wrap">
     <div class="ashade-albums-carousel is-medium" id="albums_carousel">
         <div class="ashade-album-item" *ngFor="let product of data.products">
             <div class="ashade-album-item__inner">
@@ -8,7 +20,7 @@
                 <div class="ashade-album-item__title">
                     <h2>{{product.name}}</h2>
                 </div>
-                <a [href]="product.link" class="ashade-button">Devamı</a>
+                <a [routerLink]="'/'+translate.currentLang+product.link" class="ashade-button">Devamı</a>
             </div>
         </div>
     </div><!-- .ashade-albums-carousel -->
@@ -16,3 +28,11 @@
         <div class="ashade-albums-carousel-progress__bar"></div>
     </div>
 </div><!-- .ashade-albums-carousel-wrap -->
+<div class="ashade-back-wrap">
+    <div class="ashade-back">
+        <span><a [routerLink]="'/'+translate.currentLang+'/products'">Dönüş Yap</a></span>
+        <span><a [routerLink]="'/'+translate.currentLang+'/products'">Geri</a></span>
+    </div>
+</div>
+</ng-container>
+<app-footer></app-footer>

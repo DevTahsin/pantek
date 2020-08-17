@@ -31,7 +31,7 @@ export class NotFoundComponent implements OnInit, OnDestroy {
               });
             if (!this.first) {
                 document.body.classList.add('is-centered','ashade-maintenance-wrap');
-                this.app.addFrontScripts();
+                // this.app.addFrontScripts();
             }
             this.first=true;
         });

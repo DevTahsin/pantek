@@ -58,17 +58,17 @@
             "extractCss": true,
             "styles": [
               {
+                "input": "src/assets/css/responsive.css",
+                "bundleName": "front",
+                "inject": false
+              },
+              {
                 "input": "src/assets/css/style.css",
                 "bundleName": "front",
                 "inject": false
               },
               {
                 "input": "src/assets/css/line-awesome.css",
-                "bundleName": "front",
-                "inject": false
-              },
-              {
-                "input": "src/assets/css/responsive.css",
                 "bundleName": "front",
                 "inject": false
               },
@@ -144,8 +144,8 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "32kb"
+                  "maximumWarning": "10kb",
+                  "maximumError": "100kb"
                 }
               ]
             }

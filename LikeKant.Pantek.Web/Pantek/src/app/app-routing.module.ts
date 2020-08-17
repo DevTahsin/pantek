@@ -6,8 +6,9 @@ const routes: Routes = [
   //   path: '',
   //   loadChildren: './front/front.module#FrontModule'
   // },
-  { path: '', loadChildren: () => import('./front/front.module').then(m => m.FrontModule) },
-  { path: 'admin', loadChildren: () => import('./layout/admin/admin/admin.module').then(m => m.AdminModule) }];
+  { path: 'admin', loadChildren: () => import('./layout/admin/admin/admin.module').then(m => m.AdminModule) },
+  { path: '', redirectTo: '/tr', pathMatch: 'full'  },
+  { path: '', loadChildren: () => import('./front/front.module').then(m => m.FrontModule) }]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

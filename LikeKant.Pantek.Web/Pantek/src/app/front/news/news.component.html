@@ -1,12 +1,16 @@
 <div class="ashade-page-title-wrap">
     <h1 class="ashade-page-title">
-        <span>{{'SAYFALAR.HABERLER.SOL-BASLIK-ACIKLAMA' | translate}}</span>{{'SAYFALAR.HABERLER.SOL-BASLIK' | translate}}
+        <span>
+            <a [routerLink]="'/'+translate.currentLang+'/'">/</a>
+            >
+            <a [routerLink]="'/'+translate.currentLang+'/news'">{{'SAYFALAR.HABERLER.SOL-BASLIK' | translate}}</a>
+        </span><p>{{'SAYFALAR.HABERLER.SOL-BASLIK' | translate}}</p>
     </h1>
 </div>
 
 <main class="ashade-content-wrap">
     <div class="ashade-content-scroll">
-        <div class="ashade-content" *ngIf="news">
+        <div class="ashade-content" >
             <section class="ashade-section">
                 <div class="ashade-row margin-top">
                     <div class="ashade-col col-12">
@@ -24,7 +28,7 @@
                                                 {{newd.date | date:'fullDate':'':translate.currentLang}}
                                             </span>
                                             <span>
-                                                <a href="#" (click)="locateLink(newd.link,newd.name)"
+                                                <a [routerLink]="newd.link"
                                                     class="ashade-learn-more">{{'SAYFALAR.HABERLER.DEVAMINI-OKU' | translate}}</a>
                                             </span>
                                         </div>

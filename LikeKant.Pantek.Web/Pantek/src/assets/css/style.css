@@ -1017,7 +1017,7 @@ nav.ashade-nav ul.main-menu li.current-menu-ancestor > a {
     transform-origin: 0% 0%;
     transform: rotate(-90deg);
 	transition: transform 0.5s;
-    z-index: 3;
+    z-index: 33;
     cursor: default;
 	pointer-events: none;
 }
@@ -1044,6 +1044,12 @@ nav.ashade-nav ul.main-menu li.current-menu-ancestor > a {
     font-family: 'Roboto Condensed', sans-serif;
     transition: padding 0.5s, opacity 0.5s;
 	opacity: 0;
+}
+h1.ashade-page-title {
+	pointer-events: auto;
+}
+h1.ashade-page-title p {
+	font-size:45px;
 }
 .ashade-mobile-title-wrap h1 span,
 .ashade-page-title-wrap h1 span {

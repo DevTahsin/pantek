@@ -10,6 +10,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Net;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography.X509Certificates;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
@@ -123,7 +124,7 @@ namespace LikeKant.Pantek.Core.Controllers
         public IActionResult GetCategoriesForClient([FromQuery] string lan)
         {
             Regex rgx = new Regex("[^a-zA-Z0-9 -]");
-            return Ok(_db.Categories.Where(t => !t.IsDeleted && t.Language.Code == lan).Select(t => new { t.Name, groups = t.Groups.Where(v=>!v.IsDeleted).Select(v=> new { image = v.ImageURL,v.Name,v.Description,link="/product-group/"+rgx.Replace(v.Name, "").Replace(' ', '-')+"-"+v.Id,products= v.Products.Where(k=>!k.IsDeleted).Select( k => new { name=k.Title, link = "/product/"+rgx.Replace(k.Title, "").Replace(' ', '-') + "-" + k.Id }) }) }));
+            return Ok(_db.Categories.Where(t => !t.IsDeleted && t.Language.Code == lan).Select(t => new { t.Name, groups = t.Groups.Where(v=>!v.IsDeleted).Select(v=> new { image = v.ImageURL,v.Name,v.Description,link= "/" + lan + "/product-group/" + rgx.Replace(v.Name, "").Replace(' ', '-')+"-"+v.Id,products= v.Products.Where(k=>!k.IsDeleted).Select( k => new { name=k.Title, image=k.Images.Where(x=>!x.IsDeleted).Select(t=>t.ImageURL).FirstOrDefault(), link = "/"+lan+"/product/"+rgx.Replace(k.Title, "").Replace(' ', '-') + "-" + k.Id }) }) }));
         }
 
         [HttpGet, Authorize]
@@ -191,7 +192,7 @@ namespace LikeKant.Pantek.Core.Controllers
             bool result = int.TryParse(d, out id);
             if (!result) return BadRequest();
             Regex rgx = new Regex("[^a-zA-Z0-9 -]");
-            return Ok(_db.Groups.Where(x=> !x.IsDeleted && x.Id == id).Select(t => new {t.Description, t.Name, products = t.Products.Where(k => !k.IsDeleted).Select(k => new { image = k.Images.Where(a => !a.IsDeleted).Select(t => t.ImageURL).FirstOrDefault(), name = k.Title, link = "/product/" + rgx.Replace(k.Title, "").Replace(' ', '-') + "-" + k.Id }) }).FirstOrDefault());
+            return Ok(_db.Groups.Where(x=> !x.IsDeleted && x.Id == id).Select(t => new {t.Description,link= "/"+t.Category.Language.Code+"/product-group/" + rgx.Replace(t.Name, "").Replace(' ', '-') + "-" + t.Id, t.Name, products = t.Products.Where(k => !k.IsDeleted).Select(k => new { image = k.Images.Where(a => !a.IsDeleted).Select(t => t.ImageURL).FirstOrDefault(), name = k.Title, link = "/product/" + rgx.Replace(k.Title, "").Replace(' ', '-') + "-" + k.Id }) }).FirstOrDefault());
         }
 
         [HttpGet, Authorize]
@@ -268,7 +269,7 @@ namespace LikeKant.Pantek.Core.Controllers
             bool result = int.TryParse(d, out id);
             if (!result) return BadRequest();
             Regex rgx = new Regex("[^a-zA-Z0-9 -]");
-            return Ok(_db.Products.Where(x => !x.IsDeleted && x.Id == id).Select(t => new { group=t.Group.Name,groupLink = "/product-group/" + rgx.Replace(t.Group.Name, "").Replace(' ', '-') + "-" + t.GroupId, header = t.Title, descriptionHtml = t.InnerHTML, metaDescription = t.MetaDescription, images = t.Images.Where(a => !a.IsDeleted).Select(t => new { link = t.ImageURL, alt = t.AltText }) }).FirstOrDefault());
+            return Ok(_db.Products.Where(x => !x.IsDeleted && x.Id == id).Select(t => new { group=t.Group.Name,groupLink = "/product-group/" + rgx.Replace(t.Group.Name, "").Replace(' ', '-') + "-" + t.GroupId, link = "/product/" + rgx.Replace(t.Title, "").Replace(' ', '-') + "-" + t.Id , header = t.Title, descriptionHtml = t.InnerHTML, metaDescription = t.MetaDescription, images = t.Images.Where(a => !a.IsDeleted).Select(t => new { link = t.ImageURL, alt = t.AltText }) }).FirstOrDefault());
         }
         [HttpPost, Authorize]
         [Route("products")]
@@ -348,7 +349,7 @@ namespace LikeKant.Pantek.Core.Controllers
         public IActionResult GetNewsForClient([FromQuery] string lan)
         {
             Regex rgx = new Regex("[^a-zA-Z0-9 -]");
-            return Ok(_db.News.Where(t => !t.IsDeleted && t.Language.Code == lan).OrderByDescending(t=>t.Id).Select(t => new { link = "/article/" + rgx.Replace(t.Title, "").Replace(' ', '-') + "-" + t.Id, name=t.Title,description=t.MetaDescription,date=t.InsertTime,t.InsertTime,image=t.Images.Where(t => t.IsDefault&& !t.IsDeleted).Select(t => new { link = t.ImageURL, alt = t.AltText }).FirstOrDefault() }));
+            return Ok(_db.News.Where(t => !t.IsDeleted && t.Language.Code == lan).OrderByDescending(t=>t.Id).Select(t => new { link = "/"+lan+"/article/" + rgx.Replace(t.Title, "").Replace(' ', '-') + "-" + t.Id, name=t.Title,description=t.MetaDescription,date=t.InsertTime,t.InsertTime,image=t.Images.Where(t => t.IsDefault&& !t.IsDeleted).Select(t => new { link = t.ImageURL, alt = t.AltText }).FirstOrDefault() }));
         }
 
         [HttpGet, Authorize]
@@ -369,7 +370,7 @@ namespace LikeKant.Pantek.Core.Controllers
             bool result = int.TryParse(d, out id);
             if (!result) return BadRequest();
             Regex rgx = new Regex("[^a-zA-Z0-9 -]");
-            return Ok(_db.News.Where(x => !x.IsDeleted && x.Id == id).Select(t => new { header = t.Title, descriptionHtml = t.InnerHTML, metaDescription = t.MetaDescription, images = t.Images.Where(a => !a.IsDeleted).Select(t => new { link = t.ImageURL, alt = t.AltText }) }).FirstOrDefault());
+            return Ok(_db.News.Where(x => !x.IsDeleted && x.Id == id).Select(t => new { link = "/article/" + rgx.Replace(t.Title, "").Replace(' ', '-') + "-" + t.Id, header = t.Title, descriptionHtml = t.InnerHTML, metaDescription = t.MetaDescription, images = t.Images.Where(a => !a.IsDeleted).Select(t => new { link = t.ImageURL, alt = t.AltText }) }).FirstOrDefault());
         }
         [HttpPost, Authorize]
         [Route("news")]

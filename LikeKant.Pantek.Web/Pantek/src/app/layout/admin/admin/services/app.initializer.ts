@@ -12,9 +12,8 @@ export function appInitializer(authService: AuthService) {
                 .add(resolve);
         } else {
             loadStyle('admin.css');
-            var urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.has('lang')){
-                localStorage['lang'] = urlParams.get('lang');
+            if (location.pathname === '' && localStorage['lang']){
+                location.replace('/'+localStorage['lang'])
             }
             resolve();
         }

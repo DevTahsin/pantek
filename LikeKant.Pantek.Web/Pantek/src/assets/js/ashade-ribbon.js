@@ -21,25 +21,25 @@ let ashade_ribbon = {
 	},
 
 	init: function() {
-		if (ashade_ribbon.$el.hasClass('is-medium')) {
-			ashade_ribbon.$bar = ashade_ribbon.$el.parent().children('.ashade-albums-carousel-progress');
+		if ($('.ashade-albums-carousel').hasClass('is-medium')) {
+			ashade_ribbon.$bar = $('.ashade-albums-carousel').parent().children('.ashade-albums-carousel-progress');
 			ashade_ribbon.barTarget = 0;
 			ashade_ribbon.barCurrent = 0;
 			ashade_ribbon.type = 'medium';
 		}		
-		if (ashade_ribbon.$el.hasClass('is-vertical')) {
+		if ($('.ashade-albums-carousel').hasClass('is-vertical')) {
 			ashade_ribbon.type = 'vertical';
 		}
 
 		// Mouse Events
-		ashade_ribbon.$el.on('mousedown', function(e) {
+		$('.ashade-albums-carousel').on('mousedown', function(e) {
 			if (ashade_ribbon.isTouch) {
 				ashade_ribbon.isTouch = false;
 			}
-			if (!ashade_ribbon.$el.hasClass('is-hovered')) {
+			if (!$('.ashade-albums-carousel').hasClass('is-hovered')) {
 				e.preventDefault();
 				ashade_ribbon.isDown = true;
-				ashade_ribbon.$el.addClass('is-grabbed');
+				$('.ashade-albums-carousel').addClass('is-grabbed');
 				if (ashade_ribbon.type == 'vertical') {
 					ashade_ribbon.old_pageX = e.clientY;
 				} else {
@@ -48,11 +48,11 @@ let ashade_ribbon = {
 			}
 		}).on('mouseup', function() {
 			ashade_ribbon.isDown = false;
-			ashade_ribbon.$el.removeClass('is-grabbed');
+			$('.ashade-albums-carousel').removeClass('is-grabbed');
 			ashade_ribbon.isDownLink = false;
 		}).on('mouseleave', function() {
 			ashade_ribbon.isDown = false;
-			ashade_ribbon.$el.removeClass('is-grabbed');
+			$('.ashade-albums-carousel').removeClass('is-grabbed');
 			ashade_ribbon.isDownLink = false;
 		}).on('mousemove', function(e) {
 			e.preventDefault();
@@ -77,19 +77,19 @@ let ashade_ribbon = {
 		});
 		
 		// Touch Events
-		ashade_ribbon.$el[0]?.addEventListener('touchstart', function(e) {
+		$('.ashade-albums-carousel')[0]?.addEventListener('touchstart', function(e) {
 			if (!ashade_ribbon.isTouch) {
 				ashade_ribbon.isTouch = true;
 			}
 			ashade_ribbon.isDown = true;
-			ashade_ribbon.$el.addClass('is-grabbed');
+			$('.ashade-albums-carousel').addClass('is-grabbed');
 			if (ashade_ribbon.type == 'vertical') {
 				ashade_ribbon.old_pageX = e.touches[0].clientY;
 			} else {
 				ashade_ribbon.old_pageX = e.touches[0].clientX;
 			}
 		}, false);
-		ashade_ribbon.$el[0]?.addEventListener('touchmove', function(e) {
+		$('.ashade-albums-carousel')[0]?.addEventListener('touchmove', function(e) {
 			if (ashade_ribbon.isDown) {
 				if (ashade_ribbon.type == 'vertical') {
 					let newX = (ashade_ribbon.old_pageX - e.touches[0].clientY)*ashade_ribbon.touchSpeed.vertical,
@@ -109,21 +109,21 @@ let ashade_ribbon = {
 				ashade_ribbon.isLinkMoved = false;
 			}			
 		}, false);
-		ashade_ribbon.$el[0]?.addEventListener('touchend', function(e) {
+		$('.ashade-albums-carousel')[0]?.addEventListener('touchend', function(e) {
 			ashade_ribbon.isDown = false;
-			ashade_ribbon.$el.removeClass('is-grabbed');
+			$('.ashade-albums-carousel').removeClass('is-grabbed');
 			ashade_ribbon.isDownLink = false;
 		}, false);
 
 		// Links and Buttons
-		ashade_ribbon.$el.find('a.ashade-button').on('mouseover', function() {
+		$('.ashade-albums-carousel').find('a.ashade-button').on('mouseover', function() {
 			if (!ashade_ribbon.isTouch) {
-				ashade_ribbon.$el.addClass('is-hovered');
+				$('.ashade-albums-carousel').addClass('is-hovered');
 			}
 		}).on('mouseout', function(){
-			ashade_ribbon.$el.removeClass('is-hovered');
+			$('.ashade-albums-carousel').removeClass('is-hovered');
 		});
-		ashade_ribbon.$el.find('a').on('mousedown', function() {
+		$('.ashade-albums-carousel').find('a').on('mousedown', function() {
 			ashade_ribbon.isDownLink = true;
 		}).on('click', function(e) {
 			if (ashade_ribbon.isLinkMoved) {
@@ -134,7 +134,7 @@ let ashade_ribbon = {
 			ashade_ribbon.isLinkMoved = false;
 		});
 		
-		ashade_ribbon.$el.find('.ashade-album-item').each(function() {
+		$('.ashade-albums-carousel').find('.ashade-album-item').each(function() {
 			if ('IntersectionObserver' in window) {
 				ashade_ribbon.observer.observe(this);
 			} else {
@@ -149,7 +149,7 @@ let ashade_ribbon = {
 		ashade_ribbon.animate();
 	},
 	layout: function() {
-		let $this = ashade_ribbon.$el,
+		let $this = $('.ashade-albums-carousel'),
 			fullWidth = 0,
 			setHeight;
 
@@ -201,7 +201,7 @@ let ashade_ribbon = {
 			let body_height = fullWidth;
 			$ashade_body.height(body_height);
 		} else {
-			let spacingLeft = parseInt($this.find('.ashade-album-item__inner').css('margin-right'), 10),
+			let spacingLeft =200,// parseInt($this.find('.ashade-album-item__inner').css('margin-right'), 10),
 				body_height = fullWidth - $ashade_window.width() + spacingLeft + $ashade_window.height();
 
 
@@ -213,19 +213,19 @@ let ashade_ribbon = {
 		if (ashade_ribbon.type == 'vertical') {
 			// Scroll Content
 			ashade_ribbon.current += ((ashade_ribbon.target - ashade_ribbon.current) * 0.1);
-			ashade_ribbon.$el.css('transform', 'translate3d(0, -'+ ashade_ribbon.current +'px, 0)');
+			$('.ashade-albums-carousel').css('transform', 'translate3d(0, -'+ ashade_ribbon.current +'px, 0)');
 			// Img Motion Effect
 			let img_current = (ashade_ribbon.target - ashade_ribbon.current) * 0.1;
-			ashade_ribbon.$el.find('.ashade-album-item__overlay').css('transform', 'translate3d(0, '+ img_current +'px, 0)');
-			ashade_ribbon.$el.find('img').css('transform', 'translate3d(0, '+ img_current +'px, 0)');
+			$('.ashade-albums-carousel').find('.ashade-album-item__overlay').css('transform', 'translate3d(0, '+ img_current +'px, 0)');
+			$('.ashade-albums-carousel').find('img').css('transform', 'translate3d(0, '+ img_current +'px, 0)');
 		} else {
 			// Scroll Content
 			ashade_ribbon.current += ((ashade_ribbon.target - ashade_ribbon.current) * 0.1);
-			ashade_ribbon.$el.css('transform', 'translate3d(-'+ ashade_ribbon.current +'px, 0, 0)');
+			$('.ashade-albums-carousel').css('transform', 'translate3d(-'+ ashade_ribbon.current +'px, 0, 0)');
 			// Img Motion Effect
 			let img_current = (ashade_ribbon.target - ashade_ribbon.current) * 0.1;
-			ashade_ribbon.$el.find('.ashade-album-item__overlay').css('transform', 'translate3d('+ img_current +'px, 0, 0)');
-			ashade_ribbon.$el.find('img').css('transform', 'translate3d('+ img_current +'px, 0, 0)');			
+			$('.ashade-albums-carousel').find('.ashade-album-item__overlay').css('transform', 'translate3d('+ img_current +'px, 0, 0)');
+			$('.ashade-albums-carousel').find('img').css('transform', 'translate3d('+ img_current +'px, 0, 0)');			
 			// Bar Update
 			if (ashade_ribbon.type == 'medium') {
 				ashade_ribbon.barCurrent += ((ashade_ribbon.barTarget - ashade_ribbon.barCurrent) * 0.1);
@@ -249,7 +249,7 @@ if ('IntersectionObserver' in window) {
 }
 
 jQuery(document).ready( function() {
-	ashade_ribbon.init();
+	window.ashade_ribbon = ashade_ribbon;
 });
 
 $ashade_window.on('resize', function() {

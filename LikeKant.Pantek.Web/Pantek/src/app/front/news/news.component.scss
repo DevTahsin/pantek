@@ -1,105 +1,106 @@
 .module {
-    min-width: 270px;
-    height: 470px;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15);
-    transition: all 0.3s linear 0s;
-    overflow: hidden;
-    position: relative;
-    &:hover {
-        box-shadow: 0 1px 35px 0 rgba(0, 0, 0, 0.3);
-      }
-      .thumbnail {
-        position: relative;
-        overflow: hidden;
-        background: black;
-      }
-      .thumbnail img {
-        width: 120%;
-        transition: all 0.3s;
-      }
-      .module:hover .thumbnail img {
-        transform: scale(1.1);
-        opacity: 0.6;
-      }
-      
-      .thumbnail .date {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        background: #e74c3c;
-        padding-top: 10px;
-        color: #fff;
-        font-weight: bold;
-        border-radius: 100%;
-        height: 55px;
-        width: 55px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        font-size: 12px;
-        text-transform: uppercase;
-      }
-      .date div:first-child {
-        font-size: 18px;
-        line-height: 1.2;
-      }
-      .content {
-        position: absolute;
-        width: 100%;
-        height: 178px;
-        bottom: 0;
-        background: #fff;
-        padding: 30px;
-        transition: all 0.3s cubic-bezier(0.37, 0.75, 0.61, 1.05) 0s;
-      }
-      &:hover .content {
-        height: 278px;
-      }
-      
-      .content .category {
-        position: absolute;
-        top: -34px;
-        left: 0;
-        color: #fff;
-        text-transform: uppercase;
-        background: #e74c3c;
-        padding: 10px 15px;
-        font-weight: bold;
-      }
-      .title {
-        margin: 0;
-        padding: 0 0 10px;
-        color: #333333;
-        font-size: 24px;
-        font-weight: 700;
-      }
-      .sub-title {
-        margin: 0;
-        padding: 0 0 20px;
-        color: #e74c3c;
-        font-size: 20px;
-        font-weight: 400;
-      }
-      .description {
-        color: #666666;
-        font-size: 14px;
-        line-height: 1.8em;
-        height: 0;
-        opacity: 1;
-        transition: all 0.3s cubic-bezier(0.37, 0.75, 0.61, 1.05) 0s;
-        overflow: hidden;
-      }
-      &:hover .description {
-        height: 100px;
-      }
-      .meta {
-        margin: 30px 0 0;
-        color: #999999;
-      }
-      span a{
-          float:right;
-          color:#000;
-          cursor:pointer;
-      }
+  min-width: 270px;
+  height: 470px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15);
+  transition: all 0.3s linear 0s;
+  overflow: hidden;
+  position: relative;
+  &:hover {
+    box-shadow: 0 1px 35px 0 rgba(0, 0, 0, 0.3);
   }
-  
+  .thumbnail {
+    position: relative;
+    overflow: hidden;
+    background: black;
+  }
+  .thumbnail img {
+    width: 120%;
+    transition: all 0.3s;
+  }
+  .module:hover .thumbnail img {
+    transform: scale(1.1);
+    opacity: 0.6;
+  }
+
+  .thumbnail .date {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #e74c3c;
+    padding-top: 10px;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 100%;
+    height: 55px;
+    width: 55px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+  .date div:first-child {
+    font-size: 18px;
+    line-height: 1.2;
+  }
+  .content {
+    position: absolute;
+    width: 100%;
+    height: 178px;
+    bottom: 0;
+    background: #000;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-top: 0px;
+    padding: 30px;
+    transition: all 0.3s cubic-bezier(0.37, 0.75, 0.61, 1.05) 0s;
+  }
+  &:hover .content {
+    height: 278px;
+  }
+
+  .content .category {
+    position: absolute;
+    top: -34px;
+    left: 0;
+    color: #fff;
+    text-transform: uppercase;
+    background: #e74c3c;
+    padding: 10px 15px;
+    font-weight: bold;
+  }
+  .title {
+    margin: 0;
+    padding: 0 0 10px;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 700;
+  }
+  .sub-title {
+    margin: 0;
+    padding: 0 0 20px;
+    color: #e74c3c;
+    font-size: 20px;
+    font-weight: 400;
+  }
+  .description {
+    color: #666666;
+    font-size: 14px;
+    line-height: 1.8em;
+    height: 0;
+    opacity: 1;
+    transition: all 0.3s cubic-bezier(0.37, 0.75, 0.61, 1.05) 0s;
+    overflow: hidden;
+  }
+  &:hover .description {
+    height: 100px;
+  }
+  .meta {
+    margin: 30px 0 0;
+    color: #999999;
+  }
+  span a {
+    float: right;
+    color: #fff;
+    cursor: pointer;
+  }
+}

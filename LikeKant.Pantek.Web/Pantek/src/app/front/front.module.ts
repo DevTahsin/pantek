@@ -20,7 +20,7 @@ import { GoogleAnalyticsService } from '@app/services/google-analytics.service';
 
 const routes: Routes = [
   {
-    path: '',
+    path: ':language',
     component: FrontComponent,
     children: [
       { path: '', component: HomeComponent },

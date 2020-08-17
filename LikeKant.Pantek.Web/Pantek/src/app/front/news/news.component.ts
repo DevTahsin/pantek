@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Title, Meta } from '@angular/platform-browser';
 import { Subscription } from 'rxjs';
@@ -21,9 +21,9 @@ interface New {
   templateUrl: './news.component.html',
   styleUrls: ['./news.component.scss']
 })
-export class NewsComponent implements OnInit,OnDestroy {
+export class NewsComponent implements OnInit,OnDestroy, AfterViewInit {
 
-  constructor(private app: AppComponent,private front: FrontComponent,private meta: Meta,private title: Title,public translate: TranslateService, private http: HttpClient,
+  constructor(private app: AppComponent,private chn:ChangeDetectorRef,private front: FrontComponent,private meta: Meta,private title: Title,public translate: TranslateService, private http: HttpClient,
     private googleAnalyticsService: GoogleAnalyticsService) { }
   news: New[] = [];
   
@@ -32,26 +32,55 @@ export class NewsComponent implements OnInit,OnDestroy {
   selectedGroup =0;
   ngOnDestroy(): void {
     this.metaSubscribe.unsubscribe();
+    this.meta.removeTag("name='description'")
   }
 
   ngOnInit(): void {
     this.front.openTopPadding();
     this.metaSubscribe= this.translate.onLangChange.subscribe(t => {
+      this.front.openLoader();
       this.http.get(environment.apiUrl+'/client/news?lan='+this.translate.currentLang).toPromise().then(
         (v:any) => {
           this.news = v;
-          this.app.addFrontScripts();
+          this.chn.detectChanges();
+          this.front.renderAshade();
+          // this.app.addFrontScripts();
+          this.front.closeLoader();
         }
       )
       this.translate.get(['SAYFALAR.HABERLER.META-BASLIK','SAYFALAR.HABERLER.META-ACIKLAMA']).toPromise().then(t => {
+        this.meta.removeTag("name='description'")
         this.meta.addTag({name: 'description', content:t['SAYFALAR.HABERLER.META-ACIKLAMA'] })
         this.title.setTitle(t['SAYFALAR.HABERLER.META-BASLIK']);
-      });});
+      });
+    });
+      document.body.classList.remove('ashade-home-template');
+      document.body.classList.add('ashade-smooth-scroll', 'has-spotlight');
   }
 
   locateLink(link,name) {
     this.googleAnalyticsService.eventEmitter("HABER_TIKLAMASI", name, "userLabel", 1);
     location.replace(link);
+  }
+  ngAfterViewInit(): void {
+    if(this.translate.currentLang){
+      this.front.openLoader();
+      this.http.get(environment.apiUrl+'/client/news?lan='+this.translate.currentLang).toPromise().then(
+        (v:any) => {
+          this.news = v;
+          this.chn.detectChanges();
+          this.front.renderAshade();
+          // this.app.addFrontScripts();
+      this.front.closeLoader();
+        }
+      );
+      this.translate.get(['SAYFALAR.HABERLER.META-BASLIK','SAYFALAR.HABERLER.META-ACIKLAMA']).toPromise().then(t => {
+        this.meta.removeTag("name='description'")
+        this.meta.addTag({name: 'description', content:t['SAYFALAR.HABERLER.META-ACIKLAMA'] })
+        this.title.setTitle(t['SAYFALAR.HABERLER.META-BASLIK']);
+      });
+    
+    }
   }
 
 }
