@@ -22,7 +22,7 @@
     <dx-tabs class="margin-top" [dataSource]="groupTabs" [selectedIndex]="0" (onItemClick)="groupsChanged($event)"
         itemTemplate="tabItem">
         <div *dxTemplate="let itemData of 'tabItem'">
-            <dx-button icon="trash" (click)="categoryDelete(itemData.name, itemData.id)"></dx-button>
+            <dx-button icon="trash" (click)="groupDelete(itemData.name, itemData.id)"></dx-button>
             <dx-button icon="edit" class="margin-left"
                 (click)="group = {id:itemData.id,name:itemData.name,imageUrl: itemData.imageURL, description: itemData.description,categoryId: group.categoryId};groupPopup=true;">
             </dx-button>

@@ -4,10 +4,10 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://192.168.1.3:63841/api',
-  odataUrl: 'http://192.168.1.3:63841/odata',
-  domain: 'http://192.168.1.3:4200',
-  imagePathBase: 'http://192.168.1.3:63841/'
+  apiUrl: 'http://localhost:63841/api',
+  odataUrl: 'http://localhost:63841/odata',
+  domain: 'http://localhost:4200',
+  imagePathBase: 'http://localhost:63841/'
 };
 
 /*

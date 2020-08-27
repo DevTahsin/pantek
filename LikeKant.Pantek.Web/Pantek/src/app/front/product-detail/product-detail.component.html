@@ -50,7 +50,7 @@
                     <div class="ashade-row" #row>
                         <div class="ashade-col col-12">
                             <div id="carousel" class="flexslider">
-                                <div class="flex-viewport">
+                                <div class="flex-viewport"> 
                                     <ul class="slides"
                                         [ngStyle]="{'transform': 'translate3d('+latestWidth+'px, 0px, 0px)'}">
                                         <li *ngFor="let image of data.images;let i = index">
@@ -59,6 +59,7 @@
                                             </a>
                                         </li>
                                     </ul>
+                                    <div class="border-bottom"></div>
                                 </div>
                                 <ul class="flex-direction-nav">
                                     <li class="flex-nav-prev"><a class="flex-prev" href="#" role="button"

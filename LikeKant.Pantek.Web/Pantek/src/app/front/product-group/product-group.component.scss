@@ -1,0 +1,9 @@
+.ashade-button {
+    opacity:0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    padding: 0 !important;
+    &:hover {
+        opacity: 0 !important;
+    }
+}

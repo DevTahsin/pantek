@@ -45,12 +45,14 @@ export class ProductGroupComponent implements OnInit, OnDestroy {
             (v: any) => {
                 this.data = v;
                 this.meta.addTag({ name: 'description', content: this.data.description })
-                this.title.setTitle(this.data.name + ' - PANTEK');
+                this.title.setTitle(this.data.name + ' - REDJET Stage');
                 // this.app.addFrontScripts();
                 this.chn.detectChanges();
                 this.front.renderAshade();
-                this.front.renderCarousel();
-                this.front.closeLoader();
+                this.front.addCarousel();
+                setTimeout(() => {
+                    this.front.closeLoader();
+                }, 250);
             }
         )
         this.metaSubscribe = this.translate.onLangChange.subscribe(t => {
@@ -66,6 +68,7 @@ export class ProductGroupComponent implements OnInit, OnDestroy {
         this.metaSubscribe.unsubscribe();
         document.body.classList.remove('ashade-albums-template', 'ashade-albums-template--carousel');
         this.meta.removeTag("name='description'");
+        this.front.removeCarousel();
         document.getElementsByClassName('ashade-cursor')[0].classList.remove('int-grab-h');
     }
 }

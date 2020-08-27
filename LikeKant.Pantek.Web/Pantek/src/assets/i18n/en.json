@@ -39,7 +39,8 @@
       "META-ACIKLAMA": "PANTEK Product categories: DMX Light Control, Stage Lighting, Stage Equipment and VFX Machines.",
       "SOL-BASLIK": "PRODUCTS",
       "SOL-BASLIK-ACIKLAMA": "PRODUCT LAUNCH",
-      "KATEGORI": "CATEGORY",
+      "KATEGORI": "CATEGORIES",
+      "ARAMA": "Search...",
       "URUN": "PRODUCT",
       "GRUP": "GROUP"
     },
@@ -60,7 +61,7 @@
       "ANAYAZI": "Thank you for your interest in our products. In order to get more detailed information about the products, offer and contact our company, you can choose the following contact methods or send your question directly via the contact form. We guarantee that we will get back to you as soon as your question has been submitted.",
       "ILETISIM-YONTEMLERI": {
         "BASLIK": "COMMUNICATION METHODS",
-        "ADRES": "Adalet Mah.Manas Bul.Folkart Towers No:39 Kapı:3201 Bayraklı İZMİR/TURKEY",
+        "ADRES": ["Adalet Mah.Manas Bul.Folkart Towers No:39 Kapı:3201 Bayraklı İZMİR/TURKEY"],
         "TELEFON": "+90 (850) 241 1956",
         "MAIL": "info@redjetstage.com"
       },

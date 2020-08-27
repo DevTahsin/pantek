@@ -25,6 +25,41 @@ ashade.contentAnim = null;
 ashade.removePswp = function () {
 	 jQuery('.pswp').remove();
 }
+ashade.openEvents = function() {
+	
+jQuery(window).on('resize', function () {
+	// Window Resize Actions
+	ashade.layout();
+	setTimeout(ashade.layout(), 500);
+}).on('load', function () {
+	// Window Load Actions
+	ashade.layout();
+}).on('scroll', function () {
+	if (jQuery('body').hasClass('ashade-aside-shown')) {
+		jQuery(window).scrollTop(ashade.old_scroll_top);
+	}
+	if (jQuery('body').hasClass('ashade-mobile-menu-shown')) {
+		jQuery(window).scrollTop(ashade.old_scroll_top);
+	}
+	ashade.sScroll.target = jQuery(window).scrollTop();
+	if (ashade.sScroll.target > ($('.ashade-content-scroll').height() - $('.ashade-content-scroll').height())) {
+		ashade.sScroll.layout();
+	}
+
+	//Window Scroll Actions
+	if (jQuery('.ashade-back.is-to-top:not(.in-action)').length) {
+		if (jQuery(window).scrollTop() > jQuery(window).height() / 2) {
+			jQuery('body').addClass('has-to-top');
+		} else {
+			jQuery('body').removeClass('has-to-top');
+		}
+	}
+}).on('focus', function () {
+	if (jQuery('body').hasClass('is-unloaded')) {
+		window.location.reload();
+	}
+});
+}
 class Ashade_Before_After {
 	constructor($obj) {
 		if ($obj instanceof jQuery) {
@@ -516,9 +551,6 @@ ashade.sScroll = {
 		}
 	}
 };
-if ($('.ashade-content-scroll').length || jQuery('body').hasClass('ashade-home-template')) {
-	ashade.sScroll.animate();
-}
 
 ashade.init = function () {
 	gsap.globalTimeline.clear()
@@ -529,6 +561,9 @@ ashade.init = function () {
 	$ashade_header_holder = jQuery('<div class="ashade-header-holder"></div>');
 	$ashade_header_holder.height(jQuery('header#ashade-header').height()).prependTo($('.ashade-content-scroll'));
 
+	if ($('.ashade-content-scroll').length || jQuery('body').hasClass('ashade-home-template')) {
+		ashade.sScroll.animate();
+	}
 	// Set Logo Size
 	if (jQuery('a.ashade-logo').length) {
 		jQuery('a.ashade-logo').each(function () {
@@ -1692,9 +1727,9 @@ ashade.loading = function () {
 			});
 		}
 		var checkExist = setInterval(function () {
-			if (ashade_ribbon) {
-				if (ashade_ribbon.$bar) {
-					gsap.from(ashade_ribbon.$bar[0], {
+			if (window.ashade_ribbon) {
+				if (window.ashade_ribbon.$bar) {
+					gsap.from(window.ashade_ribbon.$bar[0], {
 						opacity: 0,
 						y: 20,
 						duration: 1,
@@ -2025,38 +2060,6 @@ jQuery(document).ready(function () {
 	// ashade.init();
 });
 
-jQuery(window).on('resize', function () {
-	// Window Resize Actions
-	ashade.layout();
-	setTimeout(ashade.layout(), 500);
-}).on('load', function () {
-	// Window Load Actions
-	ashade.layout();
-}).on('scroll', function () {
-	if (jQuery('body').hasClass('ashade-aside-shown')) {
-		jQuery(window).scrollTop(ashade.old_scroll_top);
-	}
-	if (jQuery('body').hasClass('ashade-mobile-menu-shown')) {
-		jQuery(window).scrollTop(ashade.old_scroll_top);
-	}
-	ashade.sScroll.target = jQuery(window).scrollTop();
-	if (ashade.sScroll.target > ($('.ashade-content-scroll').height() - $('.ashade-content-scroll').height())) {
-		ashade.sScroll.layout();
-	}
-
-	//Window Scroll Actions
-	if (jQuery('.ashade-back.is-to-top:not(.in-action)').length) {
-		if (jQuery(window).scrollTop() > jQuery(window).height() / 2) {
-			jQuery('body').addClass('has-to-top');
-		} else {
-			jQuery('body').removeClass('has-to-top');
-		}
-	}
-}).on('focus', function () {
-	if (jQuery('body').hasClass('is-unloaded')) {
-		window.location.reload();
-	}
-});
 
 // Keyboard Controls
 jQuery(document).on('keyup', function (e) {
@@ -2070,7 +2073,6 @@ jQuery(document).on('keyup', function (e) {
 			break;
 	}
 });
-
 // Init Content After Loading
 ashade.content_loaded = function () {
 	// Observing Counters
@@ -2091,3 +2093,5 @@ ashade.content_loaded = function () {
 	}
 	ashade.layout();
 }
+
+ashade.openEvents();

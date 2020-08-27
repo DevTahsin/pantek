@@ -31,6 +31,9 @@ export class NotFoundComponent implements OnInit, OnDestroy {
               });
             if (!this.first) {
                 document.body.classList.add('is-centered','ashade-maintenance-wrap');
+                this.front.renderAshade();
+                // this.app.addFrontScripts();
+                this.front.closeLoader();
                 // this.app.addFrontScripts();
             }
             this.first=true;
@@ -39,6 +42,6 @@ export class NotFoundComponent implements OnInit, OnDestroy {
     }
 
     locateHref() {
-        location.replace('/');
+        location.replace('/'+this.translate.currentLang);
     }
 }

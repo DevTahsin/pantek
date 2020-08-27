@@ -58,12 +58,12 @@
             "extractCss": true,
             "styles": [
               {
-                "input": "src/assets/css/responsive.css",
+                "input": "src/assets/css/style.css",
                 "bundleName": "front",
                 "inject": false
               },
               {
-                "input": "src/assets/css/style.css",
+                "input": "src/assets/css/responsive.css",
                 "bundleName": "front",
                 "inject": false
               },

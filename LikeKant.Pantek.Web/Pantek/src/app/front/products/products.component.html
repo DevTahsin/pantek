@@ -17,9 +17,8 @@
                 <div class="product-showroom">
                     <div class="ashade-row showroom-top">
                         <div class="ashade-col col-4 showroom-top--category">
-                            <!-- <button (click)="categoryToggle()">KATEGORİLER <i class="la la-angle-down"></i></button> -->
                             <div id="dl-menu" class="dl-menuwrapper">
-                                <button class="dl-trigger">KATEGORİLER <i class="la la-angle-down"></i></button>
+                                <button class="dl-trigger">{{'SAYFALAR.URUNLER.KATEGORI' |translate}} <i class="la la-angle-down"></i></button>
                                 <ul class="dl-menu">
                                     <li *ngFor="let category of categories;let h =index;">
                                         <a href="#">{{category.name}}</a>
@@ -39,7 +38,7 @@
                             </div>
                         </div>
                         <div class="ashade-col col-8 showroom-top--search">
-                            <input type="text" placeholder="Ürün ara..." #searchInput (keyup)="search($event)"><i
+                            <input type="text" [placeholder]="'SAYFALAR.URUNLER.ARAMA' |translate" #searchInput (keyup)="search($event)"><i
                                 class="la la-search search-icon-left"></i>
                             <div class="search-area" #searchArea [ngStyle]="{'max-width.px': searchMaxWidth}"
                                 [ngClass]="{'search-area':true, 'active':searchActive}">
@@ -59,14 +58,9 @@
                             <h3 class="category-title">{{category.name}}</h3>
                             <hr class="category-title--hr">
                             <div class="ashade-albums-grid ashade-grid ashade-grid-3cols">
-                                <div class="ashade-album-item ashade-grid-item" *ngFor="let group of category.groups">
-                                    <h5>{{group.name}}</h5>
+                                <div class="ashade-album-item ashade-grid-item" *ngFor="let group of category.groups" [title]="group.name">
                                     <div class="ashade-album-item__image product-item--thumbnail">
                                         <img [src]="group.image+'?width=400'" [alt]="group.name">
-                                    </div>
-                                    <div class="product-item--description"> <span>{{group.description | slice:0:250}}...</span></div>
-                                    <div class="align-right">
-                                        <a [routerLink]="group.link" class="ashade-learn-more">Devamı</a>
                                     </div>
                                     <a [routerLink]="group.link" class="ashade-album-item__link"></a>
                                 </div>

@@ -28,9 +28,9 @@
                                 {{'SAYFALAR.ILETISIM.ILETISIM-YONTEMLERI.BASLIK' | translate}}
                             </h4>
                             <ul class="ashade-contact-details__list">
-                                <li>
+                                <li *ngFor="let d of adressess">
                                     <i class="ashade-contact-icon la la-map-marker"></i>
-                                    {{'SAYFALAR.ILETISIM.ILETISIM-YONTEMLERI.ADRES' | translate}}
+                                    {{d}}
                                 </li>
                                 <li>
                                     <i class="ashade-contact-icon la la-phone"></i>

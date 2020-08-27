@@ -48,8 +48,8 @@ export class FrontComponent implements OnInit, AfterViewInit {
   }
   showOverlay = false;
   first = true;
-  openFooter(){
-    this.pages.isFooter= true;
+  openFooter() {
+    this.pages.isFooter = true;
     this.chn.detectChanges();
 
   }
@@ -104,23 +104,56 @@ export class FrontComponent implements OnInit, AfterViewInit {
     // }
     this.first = false;
   }
+  addCarousel() {
+    const data = [
+      { name: "ashade-ribbon-js", src: "/assets/js/ashade-ribbon.js" },
+      // { name: "ashade-slider", src: "/assets/js/ashade-slider.js" }
+    ];
+    this.removeCarousel();
+    for (let i = 0; i < data.length; i++) {
+      const node = this.document.createElement('script');
+      node.src = data[i].src;
+      node.id = data[i].name;
+      node.type = 'text/javascript';
+      node.async = false;
+      node.charset = 'utf-8';
+      this.document.getElementsByTagName('body')[0].appendChild(node);
+    }
+
+    this.renderCarousel();
+  }
+  removeCarousel() {
+    const eleman = this.document.getElementById('ashade-ribbon-js');
+    if (eleman) {
+      eleman.parentNode.removeChild(eleman);
+      delete window.ashade_ribbon;
+      window.$ashade_window.off('resize');
+      window.$ashade_window.off('load');
+      window.$ashade_window.off('scroll');
+      window.ashade.openEvents();
+    }
+  }
   carouselint;
   renderCarousel() {
     if (window.ashade_ribbon && this.carouselint) {
       window.ashade_ribbon.init();
       clearInterval(this.carouselint);
+      setTimeout(() => {
+        document.getElementById('main-loader').classList.add('loaded');
+      }, 50);
+      this.carouselint = null;
     }
     else if (window.ashade_ribbon) {
       // if(!this.first){
-        window.ashade_ribbon.init();
+      window.ashade_ribbon.init();
     } else if (!window.ashade_ribbon && !this.carouselint) {
       this.carouselint = setInterval(() => {
         this.renderCarousel()
       }, 250)
     }
   }
-  removePhotoSwipe(){
-    if(window.ashade){
+  removePhotoSwipe() {
+    if (window.ashade) {
       window.ashade.removePswp();
     }
   }
@@ -130,7 +163,7 @@ export class FrontComponent implements OnInit, AfterViewInit {
   openLoader() {
     document.getElementById('main-loader').classList.remove('loaded');
   }
-  closeLoader(){
+  closeLoader() {
     document.getElementById('main-loader').classList.add('loaded');
   }
   ngOnInit(): void {
@@ -142,11 +175,11 @@ export class FrontComponent implements OnInit, AfterViewInit {
       { name: "jquery", src: "/assets/js/jquery.min.js" },
       { name: "gsap", src: "/assets/js/gsap.min.js" },
       { name: "masonry", src: "/assets/js/masonry.min.js" },
-      { name: "jquery-justified-gallery", src: "/assets/js/jquery.justifiedGallery.min.js" },
+      // { name: "jquery-justified-gallery", src: "/assets/js/jquery.justifiedGallery.min.js" },
       { name: "jquery-lazy", src: "/assets/js/jquery.lazy.min.js" },
-      { name: "photoswipe-ui-default", src: "/assets/js/photoswipe-ui-default.min.js" },
-      { name: "photoswipe", src: "/assets/js/photoswipe.min.js" },
-      { name: "tiny-slider", src: "/assets/js/tiny-slider.js" },
+      // { name: "photoswipe-ui-default", src: "/assets/js/photoswipe-ui-default.min.js" },
+      // { name: "photoswipe", src: "/assets/js/photoswipe.min.js" },
+      // { name: "tiny-slider", src: "/assets/js/tiny-slider.js" },
     ]);
     this.app.addFrontScripts();
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ChangeDetectorRef, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectorRef, AfterViewInit, ViewChild, ElementRef, HostListener } from '@angular/core';
 import { FrontComponent } from 'src/app/layout/front/front.component';
 import { ActivatedRouteSnapshot, ActivatedRoute } from '@angular/router';
 import { environment } from '@environments/environment';
@@ -53,7 +53,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy, AfterViewInit 
         //   display: 'none';
         // }))
         this.meta.addTag({ name: 'description', content: this.data.metaDescription })
-        this.title.setTitle(this.data.header + ' - PANTEK');
+        this.title.setTitle(this.data.header + ' - REDJET Stage');
         // this.app.addFrontScripts();
 
         this.chn.detectChanges();
@@ -108,7 +108,9 @@ export class ProductDetailComponent implements OnInit, OnDestroy, AfterViewInit 
 
   showSlides(n) {
     this.slideIndex = n;
-    if (n > this.data.images.length) {this.slideIndex = 1}
-    if (n < 1) {this.slideIndex = this.data.images.length}
+    if (n > this.data.images.length) { this.slideIndex = 1 }
+    if (n < 1) { this.slideIndex = this.data.images.length }
   }
+
+  
 }

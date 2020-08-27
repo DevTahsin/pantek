@@ -17,6 +17,9 @@ export class ErrorInterceptor implements HttpInterceptor {
             }
 
             const error = (err && err.error && err.error.message) || err.statusText;
+            if((err.status === 404 || err.ok===false) && err.url.includes('assets/i18n')){
+                location.replace('/tr/not-found');
+            }
             console.error(err);
             return throwError(error);
         }))

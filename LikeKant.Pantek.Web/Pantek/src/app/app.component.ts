@@ -50,7 +50,7 @@ export class AppComponent {
     } else {
       const style = this.document.createElement('link');
       style.id = 'client-theme';
-      style.rel = 'stylesheet';
+      style.rel = 'preload';
       style.href = `${styleName}`;
 
       head.appendChild(style);
@@ -83,9 +83,7 @@ export class AppComponent {
 
   addFrontScripts() {
     const data = [
-      { name: 'core', src: '/assets/js/core.js' },
-      { name: "ashade-ribbon", src: "/assets/js/ashade-ribbon.js" },
-      { name: "ashade-slider", src: "/assets/js/ashade-slider.js" }];
+      { name: 'core', src: '/assets/js/core.js' }];
     data.forEach(element => {
       const eleman = this.document.getElementById(element.name);
       if (eleman) {

@@ -1,6 +1,6 @@
 export const environment = {
-  production: true,apiUrl: 'http://www.panteknoloji.com/api',
-  odataUrl: 'http://www.panteknoloji.com/odata',
-  domain: 'http://www.panteknoloji.com',
-  imagePathBase: 'http://www.panteknoloji.com/'
+  production: true,apiUrl: 'https://www.redjetstage.com/api',
+  odataUrl: 'https://www.redjetstage.com/odata',
+  domain: 'https://www.redjetstage.com',
+  imagePathBase: 'https://www.redjetstage.com/'
 };

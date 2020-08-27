@@ -11,6 +11,7 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import localeTR from '@angular/common/locales/tr';
 import { registerLocaleData } from '@angular/common';
 import { environment } from '@environments/environment';
+import {MissingTranslationHandler, MissingTranslationHandlerParams} from '@ngx-translate/core';
 registerLocaleData(localeTR);
 
 function generateGuid() {
@@ -24,6 +25,8 @@ function generateGuid() {
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, '/assets/i18n/', '.json?v='+generateGuid());
 }
+
+
 @NgModule({
   declarations: [
     AppComponent

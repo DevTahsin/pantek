@@ -31,7 +31,7 @@ const routes: Routes = [
       { path: 'product/:name', component: ProductDetailComponent },
       { path: 'article/:name', component: ArticleComponent },
       { path: 'product-group/:name', component: ProductGroupComponent },
-      // { path: '**', component: NotFoundComponent}
+      { path: '**', component: NotFoundComponent}
     ]
   }
 ];

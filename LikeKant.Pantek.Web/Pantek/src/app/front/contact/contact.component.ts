@@ -18,7 +18,7 @@ export class ContactComponent implements OnInit, OnDestroy, AfterViewInit {
 
     contactForm: FormGroup;
     first = true;
-    constructor(private chn:ChangeDetectorRef, private http: HttpClient, private front: FrontComponent, private meta: Meta, private title: Title, public translate: TranslateService, private app: AppComponent, private formBuilder: FormBuilder) {
+    constructor(private chn: ChangeDetectorRef, private http: HttpClient, private front: FrontComponent, private meta: Meta, private title: Title, public translate: TranslateService, private app: AppComponent, private formBuilder: FormBuilder) {
         this.contactForm = this.formBuilder.group({
             name: [null, Validators.required],
             email: [null, [Validators.required, Validators.email]],
@@ -26,21 +26,28 @@ export class ContactComponent implements OnInit, OnDestroy, AfterViewInit {
             message: [null, [Validators.required, Validators.maxLength(1500)]],
         });
     }
+    adressess = [];
     metaSubscribe: Subscription;
     ngOnDestroy(): void {
         this.metaSubscribe.unsubscribe();
         this.meta.removeTag("name='description'")
     }
-
+    dilleriCek() {
+        this.translate.get('SAYFALAR.ILETISIM.ADRES').toPromise().then(t => {
+            console.log(t);
+        })
+    }
     ngOnInit(): void {
         this.metaSubscribe = this.translate.onLangChange.subscribe(t => {
             this.chn.detectChanges();
             this.front.renderAshade();
             //   this.http.get(environment.apiUrl+'/client/about?lan='+t.lang).toPromise().then((t:any)=> {if(t){this.html = t.html} });
-            this.translate.get(['SAYFALAR.ILETISIM.META-BASLIK', 'SAYFALAR.ILETISIM.META-ACIKLAMA']).toPromise().then(t => {
+            this.translate.get(['SAYFALAR.ILETISIM.META-BASLIK', 'SAYFALAR.ILETISIM.META-ACIKLAMA', 'SAYFALAR.ILETISIM.ILETISIM-YONTEMLERI.ADRES']).toPromise().then(t => {
                 this.meta.addTag({ name: 'description', content: t['SAYFALAR.ILETISIM.META-ACIKLAMA'] })
                 this.title.setTitle(t['SAYFALAR.ILETISIM.META-BASLIK']);
+                this.adressess = t['SAYFALAR.ILETISIM.ILETISIM-YONTEMLERI.ADRES'];
             });
+            this.dilleriCek();
             if (this.first) {
                 // this.app.addFrontScripts();
             }
@@ -53,11 +60,12 @@ export class ContactComponent implements OnInit, OnDestroy, AfterViewInit {
     ngAfterViewInit() {
         this.chn.detectChanges();
         this.front.renderAshade();
-        if(this.translate.currentLang){
-            this.translate.get(['SAYFALAR.ILETISIM.META-BASLIK', 'SAYFALAR.ILETISIM.META-ACIKLAMA']).toPromise().then(t => {
+        if (this.translate.currentLang) {
+            this.translate.get(['SAYFALAR.ILETISIM.META-BASLIK', 'SAYFALAR.ILETISIM.META-ACIKLAMA', 'SAYFALAR.ILETISIM.ILETISIM-YONTEMLERI.ADRES']).toPromise().then(t => {
                 this.meta.removeTag("name='description'")
                 this.meta.addTag({ name: 'description', content: t['SAYFALAR.ILETISIM.META-ACIKLAMA'] })
                 this.title.setTitle(t['SAYFALAR.ILETISIM.META-BASLIK']);
+                this.adressess = t['SAYFALAR.ILETISIM.ILETISIM-YONTEMLERI.ADRES'];
             });
         }
         this.front.closeLoader();

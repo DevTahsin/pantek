@@ -106,9 +106,9 @@
     -moz-border-radius: 4px;
     border-radius: 4px;
     @media only screen and (max-width: 600px) {
-            margin-right: 30px;
+        margin-right: 30px;
     }
-    
+
     &:hover .flex-direction-nav .flex-next {
         opacity: 0.7;
         right: 30px;
@@ -187,8 +187,21 @@
         -ms-transition: all 1s ease;
         -o-transition: all 1s ease;
         transition: all 1s ease;
-        border: 2px solid rgba(255,255,255,0.2);
         padding-top: 13px;
+        .border-bottom {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            position: absolute;
+            left: 38%;
+            bottom: 0;
+            width: 400px;
+        }
+        @media only screen and (max-width: 600px) {
+            .border-bottom {
+                left: 0%;
+                bottom: 0;
+                width: 100%;
+            }
+        }
         ul.slides {
             width: 2400%;
             transition-duration: 0.6s;
@@ -221,7 +234,7 @@
         }
     }
 }
-  
+
 .modal {
     display: none;
     position: fixed;

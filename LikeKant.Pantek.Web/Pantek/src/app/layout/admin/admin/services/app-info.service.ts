@@ -5,6 +5,6 @@ export class AppInfoService {
   constructor() {}
 
   public get title() {
-    return 'Pantek';
+    return 'Redjet Stage TR';
   }
 }

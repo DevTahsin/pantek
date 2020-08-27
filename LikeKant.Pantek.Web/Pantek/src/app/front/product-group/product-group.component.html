@@ -15,12 +15,13 @@
     <div class="ashade-albums-carousel is-medium" id="albums_carousel">
         <div class="ashade-album-item" *ngFor="let product of data.products">
             <div class="ashade-album-item__inner">
-                <img [src]="product.image+'?width=1000'" alt="52" width="1000" height="1200">
+                <img [src]="product.image+'?width=1000'" alt="52" width="1000" height="1000">
                 <div class="ashade-album-item__overlay"></div>
                 <div class="ashade-album-item__title">
                     <h2>{{product.name}}</h2>
                 </div>
-                <a [routerLink]="'/'+translate.currentLang+product.link" class="ashade-button">Devamı</a>
+                <!-- <a [routerLink]="'/'+translate.currentLang+product.link" class="ashade-button">Devamı</a> -->
+                <a [routerLink]="'/'+translate.currentLang+product.link" class=" ashade-button ashade-album-item__link"></a>
             </div>
         </div>
     </div><!-- .ashade-albums-carousel -->

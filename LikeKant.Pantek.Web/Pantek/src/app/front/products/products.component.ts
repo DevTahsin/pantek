@@ -124,24 +124,24 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
         this.searchResults = [];
         this.categories.forEach(element => {
           element.groups.forEach(element => {
-            this.searchResults = this.searchResults.concat(element.products.filter(t=> t.name.toLowerCase().includes(e.target.value.toLowerCase())));
+            this.searchResults = this.searchResults.concat(element.products.filter(t => t.name.toLowerCase().includes(e.target.value.toLowerCase())));
           });
         });
       }
     }
   }
-  
+
   @ViewChild('searchArea') searchAreaElement: ElementRef;
   @ViewChild('searchInput') searchInputElement: ElementRef;
   @HostListener('document:click', ['$event'])
   clickout(event) {
-    if(event.path[0] instanceof HTMLAnchorElement){
+    if (event.path[0] instanceof HTMLAnchorElement) {
       return;
     }
-    if(!(event.path.find( t=> t==this.searchAreaElement.nativeElement || t==this.searchInputElement.nativeElement)) ){
+    if (this.searchAreaElement && this.searchInputElement && !(event.path.find(t => t == this.searchAreaElement.nativeElement || t == this.searchInputElement.nativeElement))) {
       this.searchActive = false;
-    }else {
-      if(this.searchResults.length>0){this.searchActive = true;}
+    } else {
+      if (this.searchResults.length > 0) { this.searchActive = true; }
     }
   }
 }

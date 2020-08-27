@@ -12,34 +12,35 @@
     "ILETISIM": "İLETİŞİM"
   },
   "BASA-DON": "BAŞA DÖN",
-  "ALT-BILGI": "© Copyright 2015 - 2020 Pantek Makine Elektronik Sanayi ve Ticaret Limited Şirketi. Her Hakkı Saklıdır.",
+  "ALT-BILGI": "© Copyright 2015 - 2020 Redjet Stage Makine Elektronik Sanayi ve Ticaret Limited Şirketi. Her Hakkı Saklıdır.",
   "NOT-FOUND": {
     "TEXT": "ARADIĞINIZ SAYFA BULUNAMADI",
     "RETURN-HOME": "ANASAYFAYA DÖN",
-    "DESCRIPTION": "Pantek'te aranan sayfa bulunamadı",
-    "TITLE": "404 Sayfa bulunamadı | PANTEK"
+    "DESCRIPTION": "Redjet Stage'te aranan sayfa bulunamadı",
+    "TITLE": "404 Sayfa bulunamadı | REDJET Stage"
   },
   "SAYFALAR": {
     "ANASAYFA": {
-      "META-BASLIK": "PANTEK",
-      "META-ACIKLAMA": "Pantek Makine Elektronik Sanayi ve Ticaret LTD.ŞTİ Resmi web adresidir.",
+      "META-BASLIK": "REDJET Stage",
+      "META-ACIKLAMA": "Redjet Stage Makine Elektronik Sanayi ve Ticaret LTD.ŞTİ Resmi web adresidir.",
       "SOL-BASLIK": "ÜRÜNLERİMİZİ KEŞFEDİN",
       "SOL-BASLIK-ACIKLAMA": "ÜRÜNLERİMİZİ GÖRMEK İÇİN LANSMANIMIZI ZİYARET EDİN",
       "SAG-BASLIK": "İLETİŞİME GEÇİN",
       "SAG-BASLIK-ACIKLAMA": "TEKLİF VE ÜRÜN BİLGİSİ İÇİN İLETİŞİME GEÇİN"
     },
     "HAKKIMIZDA": {
-      "META-BASLIK": "Hakkımızda - PANTEK",
-      "META-ACIKLAMA": "PANTEK Çin Halk Cumhuriyet'indeki ses, ışık ve sahne ekipmanları üreticisi olan Redjet Stage Technology Equipment CO;LTD firmasının dünya pazarındaki online satış danışmanlığını ayrıca bu üreticinin Türkiye'deki (satış, ithalat, teknik destek ve teknik servis) faaliyetlerini yürütmek için kurulmuştur. Amacımız Çin'deki üretici firma ile birlikte ortak çalışmalar yaparak Çin'deki üretim bandını da Türkiye'ye taşımaktır.",
+      "META-BASLIK": "Hakkımızda - REDJET Stage",
+      "META-ACIKLAMA": "REDJET Stage Çin Halk Cumhuriyet'indeki ses, ışık ve sahne ekipmanları üreticisi olan Redjet Stage Technology Equipment CO;LTD firmasının dünya pazarındaki online satış danışmanlığını ayrıca bu üreticinin Türkiye'deki (satış, ithalat, teknik destek ve teknik servis) faaliyetlerini yürütmek için kurulmuştur. Amacımız Çin'deki üretici firma ile birlikte ortak çalışmalar yaparak Çin'deki üretim bandını da Türkiye'ye taşımaktır.",
       "SOL-BASLIK": "HAKKIMIZDA",
       "SOL-BASLIK-ACIKLAMA": "BİZ KİMİZ?"
     },
     "URUNLER": {
-      "META-BASLIK": "Ürünler - PANTEK",
-      "META-ACIKLAMA": "PANTEK Ürün kategorileri: DMX Işık Kontrol, Sahne Aydınlatma, Sahne Ekipmanları ve Efekt Makinaları.",
+      "META-BASLIK": "Ürünler - REDJET Stage",
+      "META-ACIKLAMA": "REDJET Stage Ürün kategorileri: DMX Işık Kontrol, Sahne Aydınlatma, Sahne Ekipmanları ve Efekt Makinaları.",
       "SOL-BASLIK": "ÜRÜNLER",
       "SOL-BASLIK-ACIKLAMA": "ÜRÜN LANSMANIMIZ",
-      "KATEGORI": "KATEGORİ",
+      "KATEGORI": "KATEGORİLER",
+      "ARAMA": "Ürün ara...",
       "URUN": "ÜRÜN",
       "GRUP": "GRUP"
     },
@@ -54,8 +55,8 @@
       "SAG-GERİ-BASLIK-ACIKLAMA": "DÖNÜŞ YAP"
     },
     "HABERLER": {
-      "META-BASLIK": "Haberler - PANTEK",
-      "META-ACIKLAMA": "PANTEK'te son gelişmeler. Yeni ürünlerimiz ve yeni geliştirme haberlerimiz.",
+      "META-BASLIK": "Haberler - REDJET Stage",
+      "META-ACIKLAMA": "REDJET Stage'te son gelişmeler. Yeni ürünlerimiz ve yeni geliştirme haberlerimiz.",
       "SOL-BASLIK": "HABERLER",
       "SOL-BASLIK-ACIKLAMA": "Gelecek ürünlerimiz ve gelişmelerimiz",
       "DEVAMINI-OKU":"Devamını Oku"
@@ -64,12 +65,12 @@
       "ANAYAZI": "Ürünlerimize ilgi duyduğunuz için teşekkür ederiz. Ürünler hakkında daha detaylı bilgi almak, teklif ve şirketimiz ile iletişime geçmek için aşağıda bulunan iletişim yöntemlerini tercih edebilir veya direk iletişim formu ile sorunuzu iletebilirsiniz. Sorunuz iletildikten mutlak kısa sürede geri dönüş sağlayacağımızı garanti ediyoruz.",
       "ILETISIM-YONTEMLERI": {
         "BASLIK": "İLETİŞİM YÖNTEMLERİ",
-        "ADRES": "Adalet Mah.Manas Bul.Folkart Towers No:39 Kapı:3201 Bayraklı İZMİR/TURKEY",
+        "ADRES": ["Adalet Mah.Manas Bul.Folkart Towers No:39 Kapı:3201 Bayraklı İZMİR/TURKEY", "asdsadasd asd"],
         "TELEFON": "+90 (850) 241 1956",
         "MAIL": "info@redjetstage.com"
       },
-      "META-BASLIK": "İletişim - PANTEK",
-      "META-ACIKLAMA": "Bir ürünle alakalı sorunuz, görüşünüz ve teklifleriniz için bu sayfa aracılığıyla PANTEK ile iletişime geçin.",
+      "META-BASLIK": "İletişim - REDJET Stage",
+      "META-ACIKLAMA": "Bir ürünle alakalı sorunuz, görüşünüz ve teklifleriniz için bu sayfa aracılığıyla REDJET Stage ile iletişime geçin.",
       "SOL-BASLIK": "İLETİŞİM",
       "SOL-BASLIK-ACIKLAMA": "Teklif ve Ürün Bilgisi için iletişime geçin",
       "FORM" : {

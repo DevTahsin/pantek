@@ -47,12 +47,11 @@ export class ArticleComponent implements OnInit, OnDestroy {
       (v: any) => {
         this.data = v;
         this.meta.addTag({ name: 'description', content: this.data.metaDescription })
-        this.title.setTitle(this.data.header + ' - PANTEK');
+        this.title.setTitle(this.data.header + ' - REDJET Stage');
         // this.app.addFrontScripts();
         this.chn.detectChanges();
         this.front.renderAshade();
         this.front.closeLoader();
-        this.maxHeight = this.row.nativeElement.clientWidth;
         // document.body.classList.add('ashade-albums-template', 'ashade-albums-template--carousel');
       }
     )
@@ -64,8 +63,6 @@ export class ArticleComponent implements OnInit, OnDestroy {
     document.body.classList.remove('ashade-home-template');
     document.body.classList.add('ashade-smooth-scroll', 'has-spotlight');
   }
-  @ViewChild('row') row: ElementRef;
-  maxHeight = 0;
   ngAfterViewInit() {
   }
   ngOnDestroy(): void {

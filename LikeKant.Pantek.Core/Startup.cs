@@ -32,6 +32,7 @@ using SixLabors.ImageSharp.Web.Processors;
 using Microsoft.Extensions.Options;
 using SixLabors.ImageSharp.Web.Middleware;
 using SixLabors.ImageSharp.Web;
+using Microsoft.AspNetCore.Rewrite;
 
 namespace LikeKant.Pantek.Core
 {
@@ -71,13 +72,12 @@ namespace LikeKant.Pantek.Core
                 options.RendertronUrl = "http://localhost:3000/render/";
 
                 // proxy url for application
-                options.AppProxyUrl = "http://wwww.panteknoloji.com";
+                options.AppProxyUrl = "http://redjetstage.com/";
 
                 // prerender for firefox
                 //options.UserAgents.Add("firefox");
                 options.UserAgents = new List<string>
-                {
-                    "googlebot",
+                {"googlebot",
                     "bingbot",
                     "yandexbot",
                     "duckduckbot",
@@ -159,6 +159,10 @@ namespace LikeKant.Pantek.Core
             {
                 app.UseDeveloperExceptionPage();
             }
+            if (!env.IsDevelopment())
+            {
+                app.UseHttpsRedirection();
+            }
 
             //app.UseSpa(spa =>
             //{
@@ -177,7 +181,6 @@ namespace LikeKant.Pantek.Core
             app.UseImageSharp();
             //app.UseStaticFiles();
 
-            app.UseRendertron();
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
@@ -187,7 +190,9 @@ namespace LikeKant.Pantek.Core
                 routeBuilder.Select().Expand().Count().Filter().OrderBy().MaxTop(100).SkipToken().Build();
                 routeBuilder.MapODataServiceRoute("odata", "odata", GetEdmModel());
             });
+
             app.UseSpaStaticFiles();
+            app.UseRendertron();
             app.UseSpa(spa =>
             {
                 // To learn more about options for serving an Angular SPA from ASP.NET Core,
@@ -195,12 +200,9 @@ namespace LikeKant.Pantek.Core
 
                 spa.Options.SourcePath = "api";
             });
-            //app.UseHttpsRedirection();
 
 
             // global cors policy
-
-
             //app.UseEndpoints(x => x.MapControllers());
         }
 
